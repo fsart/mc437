@@ -21,13 +21,13 @@ public class PatrimonyService {
 
     @GET
     @Path("/patrimonies/:id")
-    public Patrimony list() {
+    public Patrimony details() {
         return new Patrimony();
     }
 
     @PUT
     @Path("/patrimonies/:id")
-    public Patrimony list() {
+    public Patrimony edit() {
         return new Patrimony();
     }
 
