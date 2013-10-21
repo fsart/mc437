@@ -52,7 +52,6 @@
 
         <pluginManagement>
             <plugins>
-
                 <!-- M2Eclipse Compatibility -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
