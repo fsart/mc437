@@ -1,6 +1,6 @@
-package com.patrimony.services;
+package com.server.services;
 
-import com.patrimony.models.Patrimony;
+import com.server.models.Patrimony;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,4 +1,4 @@
-package com.patrimony;
+package com.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;

@@ -1,4 +1,4 @@
-package com.patrimony.models;
+package com.server.models;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
