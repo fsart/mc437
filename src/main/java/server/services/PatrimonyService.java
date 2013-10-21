@@ -15,7 +15,7 @@ public class PatrimonyService {
 
     @POST
     public void import () {
-
+        return void;
     }
 
     @GET
