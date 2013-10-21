@@ -12,13 +12,12 @@ import javax.ws.rs.core.MediaType;
 public class PatrimonyService {
 
     @GET
-    public Patrimony list() {
+    Patrimony list () {
         return new Patrimony();
     }
 
-    @GET
-    @Path("/*")
-    public Patrimony details() {
+    @GET @Path("{id}")
+    Patrimony details (@PathParam("id") String id) {
         return new Patrimony();
     }
 
