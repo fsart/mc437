@@ -14,9 +14,8 @@ import javax.ws.rs.core.MediaType;
 public class PatrimonyService {
 
     @GET
-    public List<Patrimony> list () {
-        List<Patrimony> patrimonies = new List<Patrimony>();
-        return patrimonies;
+    public Patrimony list () {
+        return new Patrimony();
     }
 
     @GET
