@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/patrimonies")
 @Produces(MediaType.APPLICATION_JSON)
-public class TimeService {
+public class PatrimonyService {
 
     @GET
     public Patrimony get() {
