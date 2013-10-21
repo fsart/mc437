@@ -17,7 +17,7 @@ public class PatrimonyService {
     }
 
     @GET
-    @Path("/:id")
+    @Path("/*")
     public Patrimony details() {
         return new Patrimony();
     }
