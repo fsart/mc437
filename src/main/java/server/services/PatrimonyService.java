@@ -4,7 +4,6 @@ import server.models.Patrimony;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -17,8 +16,9 @@ public class PatrimonyService {
         return new Patrimony();
     }
 
-    @GET @Path("{id}")
-    Patrimony details (@PathParam("id") String id) {
+    @GET
+    @Path("{id}")
+    Patrimony details () {
         return new Patrimony();
     }
 
