@@ -18,7 +18,7 @@ public class PatrimonyService {
 
     @GET
     @Path("/:id")
-    public Patrimony list() {
+    public Patrimony details() {
         return new Patrimony();
     }
 
