@@ -13,6 +13,11 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class PatrimonyService {
 
+    @POST
+    public Patrimony import () {
+        return new Patrimony();
+    }
+
     @GET
     public Patrimony list () {
         return new Patrimony();
