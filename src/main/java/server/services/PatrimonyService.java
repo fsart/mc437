@@ -14,14 +14,15 @@ import javax.ws.rs.core.MediaType;
 public class PatrimonyService {
 
     @GET
-    public Patrimony list () {
-        return new Patrimony();
+    public List<Patrimony> list () {
+        List<Patrimony> patrimonies = new List<Patrimony>();
+        return patrimonies;
     }
 
     @GET
     @Path("{id}")
-    public Patrimony [] details (@PathParam("id") String id) {
-        return {new Patrimony()};
+    public Patrimony details (@PathParam("id") String id) {
+        return new Patrimony();
     }
 
 }
