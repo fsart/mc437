@@ -1,4 +1,4 @@
-package com.server.models;
+package server.models;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
