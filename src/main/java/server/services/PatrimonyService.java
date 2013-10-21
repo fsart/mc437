@@ -10,31 +10,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+@Path("/patrimonies")
 @Produces(MediaType.APPLICATION_JSON)
 public class PatrimonyService {
 
     @GET
-    @Path("/patrimonies")
-    public Patrimony list() {
-        return new Patrimony();
-    }
-
-    @GET
-    @Path("/patrimonies/:id")
-    public Patrimony details() {
-        return new Patrimony();
+    public Patrimony[] list() {
+        return {new Patrimony(), new Patrimony()};
     }
 
     @PUT
-    @Path("/patrimonies/:id")
     public Patrimony edit() {
-        return new Patrimony();
+
     }
 
     @POST
-    @Path("/patrimonies")
     public Patrimony import() {
-        return null;
+
     }
 
 }
