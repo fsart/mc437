@@ -34,6 +34,6 @@ public class PatrimonyService {
         Datastore DB = MongoResource.INSTANCE.getDatastore();
         Query<Patrimony> query = DB.createQuery(Patrimony.class);
 
-        return query.get();
+        return query.asList();
     }
 }
