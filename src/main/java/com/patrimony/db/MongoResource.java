@@ -1,4 +1,4 @@
-package com.mobjoy.gameverse.db;
+package com.patrimony.db;
 
 import java.net.UnknownHostException;
 
@@ -25,7 +25,6 @@ public enum MongoResource {
         }
     }
 
-    //@Nullable
     private MongoClient getClient() {
         try {
             return new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
@@ -35,8 +34,6 @@ public enum MongoResource {
         return null;
     }
 
-    //@Nullable
-    //public Datastore getDatastore(@NotNull String dbName) {
     public Datastore getDatastore() {
         if(ds!=null) {
             return ds;

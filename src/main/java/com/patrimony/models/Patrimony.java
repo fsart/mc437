@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
-import com.mobjoy.gameverse.config.StaticDBProperties;
-import com.mobjoy.gameverse.model.ratings.ratingsByUser.GameRating;
+import com.mobjoy.patrimony.models.ratings.ratingsByUser.GameRating;
 import com.mobjoy.gameverse.model.ratings.ratingsByUser.RatingsByUser;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;

@@ -1,16 +1,28 @@
 package com.patrimony.services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+
+import org.bson.types.ObjectId;
+
+import com.sun.jersey.api.JResponse;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
-import com.mobjoy.gameverse.db.MongoResource;
-import com.mobjoy.gameverse.model.game.normalizedTf.GameNormalizedTFs;
-import com.mobjoy.gameverse.model.game.similarities.GameSimilarities;
-import com.sun.jersey.api.JResponse;
+import com.google.code.morphia.query.UpdateOperations;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+
+import com.patrimony.db.MongoResource;
+import com.patrimony.model.Patrimony;
 
 @Path("/patrimonies")
 @Consumes("application/json")
