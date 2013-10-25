@@ -36,9 +36,13 @@ public class PatrimonyService {
     @GET
     @Produces("application/json")
     public Patrimony list() {
-        Datastore ds = new Morphia().createDatastore(new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI"))), System.getenv("DB_NAME"));
-        Query<Patrimony> query = ds.createQuery(Patrimony.class);
+        try {
+            Datastore ds = new Morphia().createDatastore(new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI"))), System.getenv("DB_NAME"));
+            Query<Patrimony> query = ds.createQuery(Patrimony.class);
 
-        return query.get();
+            return query.get();
+        } catch (UnknownHostException uh) {
+            uh.printStackTrace();
+        }
     }
 }
