@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
 
 import com.sun.jersey.api.JResponse;
 
+import com.google.code.morphia.Morphia;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
@@ -21,7 +22,6 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
-import com.patrimony.db.MongoResource;
 import com.patrimony.models.Patrimony;
 
 @Path("patrimonies")
@@ -31,8 +31,8 @@ public class PatrimonyService {
     @GET
     @Produces("application/json")
     public Patrimony list() {
-        Datastore DB = MongoResource.INSTANCE.getDatastore();
-        Query<Patrimony> query = DB.createQuery(Patrimony.class);
+        Datastore ds = new Morphia().createDatastore(System.getenv("MONGOHQ_URI"));
+        Query<Patrimony> query = ds.createQuery(Patrimony.class);
 
         return query.get();
     }
