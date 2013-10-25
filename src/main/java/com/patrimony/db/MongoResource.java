@@ -41,7 +41,7 @@ public enum MongoResource {
             }
 
                 try {
-                        db = mongoClient.getDB(System.getenv("DB_NAME"));
+                        db = mongoClient.getDB("app18759691");
 
                 } catch (Exception e) {
                         e.printStackTrace();
