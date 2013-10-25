@@ -26,7 +26,7 @@ import com.patrimony.model.Patrimony;
 
 @Path("/patrimonies")
 @Consumes("application/json")
-public class UserResources {
+public class PatrimonyService {
 
     @GET
     @Path("/")
