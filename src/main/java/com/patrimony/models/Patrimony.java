@@ -24,6 +24,6 @@ public class Patrimony {
     @XmlElement(name = "description")
     public String description;
 
-    public User() {
+    public Patrimony() {
     }
 }
