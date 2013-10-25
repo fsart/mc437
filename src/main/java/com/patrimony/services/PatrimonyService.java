@@ -29,7 +29,6 @@ import com.patrimony.models.Patrimony;
 public class PatrimonyService {
 
     @GET
-    @Path("/")
     @Produces("application/json")
     public Patrimony list() {
         return new Patrimony();
