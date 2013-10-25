@@ -20,23 +20,23 @@ public class Patrimony {
     @Property("description")
     @XmlElement(name = "description")
     public String description;
-    
+
     @Property("department")
     @XmlElement(name = "department")
     public String department;
-    
+
     @Property("mark")
     @XmlElement(name = "mark")
     public String mark;
-    
+
     @Property("model")
     @XmlElement(name = "model")
     public String model;
-    
+
     @Property("serialNumber")
     @XmlElement(name = "serialNumber")
     public String serialNumber;
-    
+
     @Property("acquisitionDate")
     @XmlElement(name = "acquisitionDate")
     public String acquisitionDate;
@@ -44,12 +44,8 @@ public class Patrimony {
     @Property("closingDate")
     @XmlElement(name = "closingDate")
     public String closingDate;
-    
+
     @Property("value")
-    @XmlElement(name = "value")
-    public String value;
-    
-	@Property("value")
     @XmlElement(name = "value")
     public String value;
 
@@ -60,11 +56,11 @@ public class Patrimony {
 	@Property("document")
     @XmlElement(name = "document")
     public String document;
-    
+
     @Property("building")
     @XmlElement(name = "building")
     public String building;
-    
+
     @Property("floor")
     @XmlElement(name = "floor")
     public String floor;
@@ -77,6 +73,10 @@ public class Patrimony {
     @XmlElement(name = "situation")
     public String situation;
 
+    public Patrimony () {
+
+    }
+/*
     public Patrimony(String id, String description, String department, String mark, String model, String serialNumber, StringacquisitionDate, String closingDate, String value, String process, String document, String building, String floor, String complement, String situation) {
 		this.id = id;
 		this.description = description;
@@ -94,7 +94,7 @@ public class Patrimony {
 		this.complement = complement;
 		this.situation = situation;
     }
-    
+
     public Patrimony(String[] patrimony) {
 		this.id = patrimony[0];
 		this.description = patrimony[1];
@@ -112,5 +112,6 @@ public class Patrimony {
 		this.complement = patrimony[13];
 		this.situation = patrimony[14];
     }
+    */
 }
 
