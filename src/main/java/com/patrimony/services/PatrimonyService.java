@@ -13,14 +13,7 @@ import org.bson.types.ObjectId;
 
 import com.sun.jersey.api.JResponse;
 
-
 import com.google.code.morphia.Datastore;
-import com.google.code.morphia.Morphia;
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import java.net.UnknownHostException;
-
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.BasicDBObject;
@@ -28,6 +21,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
+import com.patrimony.db.MongoResource;
 import com.patrimony.models.Patrimony;
 
 @Path("patrimonies")
@@ -36,14 +30,10 @@ public class PatrimonyService {
 
     @GET
     @Produces("application/json")
-    public Patrimony list() {
-        try {
-            Datastore ds = new Morphia().createDatastore(new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI"))), System.getenv("DB_NAME"));
-            Query<Patrimony> query = ds.createQuery(Patrimony.class);
+    public List<Patrimony> list() {
+        Datastore DB = MongoResource.INSTANCE.getDatastore();
+        Query<Patrimony> query = DB.createQuery(Patrimony.class);
 
-            return query.get();
-        } catch (UnknownHostException uh) {
-            uh.printStackTrace();
-        }
+        return query.asList();
     }
 }

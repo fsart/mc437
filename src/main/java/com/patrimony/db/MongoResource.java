@@ -10,7 +10,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
 public enum MongoResource {
-    INSTANCE;
+
+        INSTANCE;
     private MongoClient mongoClient;
     private Datastore ds;
     private DB db;
@@ -25,21 +26,50 @@ public enum MongoResource {
         }
     }
 
+    //@Nullable
     private MongoClient getClient() {
         try {
-            return new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
+                return new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
         } catch (UnknownHostException uh) {
             uh.printStackTrace();
         }
         return null;
     }
 
-    public Datastore getDatastore() {
-        if(ds!=null) {
-            return ds;
-        }
+    public DB getDb() {
+            if(db!=null) {
+                    return db;
+            }
 
-        ds = new Morphia().createDatastore(mongoClient, System.getenv("DB_NAME"));
+                try {
+                        db = mongoClient.getDB(System.getenv("DB_NAME"));
+
+                } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                }
+
+        return db;
+    }
+
+    public Datastore getDatastoreForTesting() {
+            try {
+                        ds = new Morphia().createDatastore(new Mongo("ec2-75-101-228-199.compute-1.amazonaws.com"), "recsystem");
+                } catch (UnknownHostException e) {
+                        e.printStackTrace();
+                }
+            return ds;
+    }
+
+
+    //@Nullable
+    //public Datastore getDatastore(@NotNull String dbName) {
+    public Datastore getDatastore() {
+            if(ds!=null) {
+                    return ds;
+            }
+
+            ds = new Morphia().createDatastore(mongoClient, System.getenv("DB_NAME"));
         return ds;
     }
 }
