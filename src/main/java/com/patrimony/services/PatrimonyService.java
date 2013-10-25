@@ -30,10 +30,10 @@ public class PatrimonyService {
 
     @GET
     @Produces("application/json")
-    public List<Patrimony> list() {
+    public Patrimony list() {
         Datastore DB = MongoResource.INSTANCE.getDatastore();
         Query<Patrimony> query = DB.createQuery(Patrimony.class);
 
-        return query.get().asList();
+        return query.get();
     }
 }
