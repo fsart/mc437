@@ -24,7 +24,7 @@ import com.mongodb.DBObject;
 import com.patrimony.db.MongoResource;
 import com.patrimony.models.Patrimony;
 
-@Path("/patrimonies")
+@Path("patrimonies")
 @Consumes("application/json")
 public class PatrimonyService {
 
