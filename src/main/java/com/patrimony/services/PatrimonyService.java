@@ -32,6 +32,6 @@ public class UserResources {
     @Path("/")
     @Produces("application/json")
     public Patrimony list() {
-        return new Patrimony;
+        return new Patrimony();
     }
 }
