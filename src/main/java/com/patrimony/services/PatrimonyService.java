@@ -37,7 +37,7 @@ public class PatrimonyService {
     private Datastore getDatastore() {
         try {
             MongoClient client = new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
-            return new Morphia().createDatastore(client, 'app18759691');
+            return new Morphia().createDatastore(client, "app18759691");
         } catch (Exception e) {
             e.printStackTrace();
             return null;
