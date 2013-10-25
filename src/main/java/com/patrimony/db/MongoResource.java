@@ -10,53 +10,13 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
 public enum MongoResource {
-
-        INSTANCE;
-    private MongoClient mongoClient;
-    private Datastore ds;
-    private DB db;
-
-    private MongoResource() {
+    public Datastore getDatastore() {
         try {
-            if (mongoClient == null) {
-                mongoClient = getClient();
-            }
+            MongoClient client = new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
+            return new Morphia().createDatastore(client);
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-    }
-
-    private MongoClient getClient() {
-        try {
-                return new MongoClient(new MongoClientURI(System.getenv("MONGOHQ_URI")));
-        } catch (UnknownHostException uh) {
-            uh.printStackTrace();
-        }
-        return null;
-    }
-
-    public DB getDb() {
-            if(db!=null) {
-                    return db;
-            }
-
-                try {
-                        db = mongoClient.getDB("app18759691");
-
-                } catch (Exception e) {
-                        e.printStackTrace();
-                        return null;
-                }
-
-        return db;
-    }
-
-    public Datastore getDatastore() {
-            if(ds!=null) {
-                    return ds;
-            }
-
-            ds = new Morphia().createDatastore(mongoClient, "app18759691");
-        return ds;
     }
 }
