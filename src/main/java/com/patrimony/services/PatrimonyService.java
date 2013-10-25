@@ -30,7 +30,7 @@ public class PatrimonyService {
 
     @GET
     @Produces("application/json")
-    public Patrimony list() {
-        return new Patrimony();
+    public int list() {
+        return 10;
     }
 }
