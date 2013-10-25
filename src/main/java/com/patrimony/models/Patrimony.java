@@ -1,16 +1,17 @@
-import java.util.ArrayList;
+package com.patrimony.models;
+
 import java.util.List;
 
 import org.bson.types.ObjectId;
 
-import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Property;
-import com.google.code.morphia.annotations.Id;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import com.mobjoy.gameverse.config.StaticDBProperties;
+import com.mobjoy.gameverse.model.ratings.ratingsByUser.GameRating;
+import com.mobjoy.gameverse.model.ratings.ratingsByUser.RatingsByUser;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 
 @XmlRootElement
 @Entity(value="patrimonies", noClassnameStored=true)

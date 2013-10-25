@@ -1,4 +1,4 @@
-package com.mobjoy.gameverse.resources;
+package com.patrimony.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,12 +12,12 @@ import com.mobjoy.gameverse.model.game.normalizedTf.GameNormalizedTFs;
 import com.mobjoy.gameverse.model.game.similarities.GameSimilarities;
 import com.sun.jersey.api.JResponse;
 
-@Path("/users")
+@Path("/patrimonies")
 @Consumes("application/json")
 public class UserResources {
 
     @GET
-    @Path("/patrimonies")
+    @Path("/")
     @Produces("application/json")
     public Patrimony list() {
         return new Patrimony
