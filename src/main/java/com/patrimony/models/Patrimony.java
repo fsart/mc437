@@ -13,9 +13,9 @@ import com.google.code.morphia.annotations.Property;
 @Entity(value="patrimonies", noClassnameStored=true)
 public class Patrimony {
 
-    @Id
+    @Property("id")
     @XmlElement(name = "id")
-    public ObjectId id;
+    public String id;
 
     @Property("description")
     @XmlElement(name = "description")
