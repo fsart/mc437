@@ -48,16 +48,12 @@ public class Patrimony {
     @Property("value")
     @XmlElement(name = "value")
     public String value;
-    
-	@Property("value")
-    @XmlElement(name = "value")
-    public String value;
 
-	@Property("process")
+    @Property("process")
     @XmlElement(name = "process")
     public String process;
 
-	@Property("document")
+    @Property("document")
     @XmlElement(name = "document")
     public String document;
     
