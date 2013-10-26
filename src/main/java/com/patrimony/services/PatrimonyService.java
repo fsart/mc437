@@ -81,6 +81,8 @@ public class PatrimonyService {
 			    getDatastore().save(patrimony);
 			}
 		}
+
+        return Response.status(200).build();
     }
 
     private File createTempFile(InputStream uploadedInputStream) {
