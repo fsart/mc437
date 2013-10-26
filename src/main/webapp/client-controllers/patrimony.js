@@ -2,7 +2,7 @@ angular.module('app.patrimony', ['angularFileUpload']).config(function ($routePr
 
     $routeProvider.
     when('/enviar-arquivo', {
-        templateUrl : 'resources/client-views/send-file.tpl.html',
+        templateUrl : '/client-views/send-file.tpl.html',
         controller : function ($rootScope, $scope, $http, $location, $fileUploader) {
             var uploader;
 
@@ -12,16 +12,16 @@ angular.module('app.patrimony', ['angularFileUpload']).config(function ($routePr
 
             $scope.uploader = $fileUploader.create({
                 scope : $scope,
-                url : 'home/upload'
+                url : 'api/patrimonies'
             });
-            
+
             $scope.uploader.bind('success', function (event, xhr, item) {
                 $location.path('/consultar-patrimonio');
             });
         }
     }).
     when('/consultar-patrimonio', {
-        templateUrl : 'resources/client-views/patrimony-list.tpl.html',
+        templateUrl : '/client-views/patrimony-list.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
         	var patrimonies;
             if (!$rootScope.user) {
@@ -48,7 +48,7 @@ angular.module('app.patrimony', ['angularFileUpload']).config(function ($routePr
             };
 
 
-            $http.get('home/patrimony').success(function (data) {
+            $http.get('api/patrimonies').success(function (data) {
             	patrimonies = data.patrimonies;
                 $scope.filter();
             });

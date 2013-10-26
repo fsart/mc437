@@ -2,7 +2,7 @@ angular.module('app.session', []).config(function ($routeProvider) {
 
     $routeProvider.
     when('/entrar', {
-        templateUrl : 'resources/client-views/login.tpl.html',
+        templateUrl : '/client-views/login.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
             $scope.login = function (form) {
             	if (form.user === 'geronimo' && form.password === '1234') {
@@ -15,7 +15,7 @@ angular.module('app.session', []).config(function ($routeProvider) {
         }
     }).
     when('/sair', {
-        templateUrl : 'resources/client-views/login.tpl.html',
+        templateUrl : '/client-views/login.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
             delete $rootScope.user;
             $location.path('/');
