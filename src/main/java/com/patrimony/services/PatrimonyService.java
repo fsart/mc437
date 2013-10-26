@@ -1,6 +1,6 @@
 package com.patrimony.services;
 
-import com.patrimony.*;
+import com.patrimony.utils.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;

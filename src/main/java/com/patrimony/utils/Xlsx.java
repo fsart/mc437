@@ -1,4 +1,4 @@
-package com.web.app;
+package com.patrimony.utils;
 
 import java.io.File;
 import java.io.InputStream;
@@ -22,7 +22,7 @@ public class Xlsx {
 	private String[] styles;
 	private Map<String, String> numFmts;
 	private XMLInputFactory factory;
-	
+
 	public void parse(File f) throws Exception {
 		ZipFile z = new ZipFile(f);
 		factory = XMLInputFactory.newInstance();
