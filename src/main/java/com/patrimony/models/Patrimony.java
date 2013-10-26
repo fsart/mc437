@@ -76,24 +76,6 @@ public class Patrimony {
     public Patrimony () {
 
     }
-/*
-    public Patrimony(String id, String description, String department, String mark, String model, String serialNumber, StringacquisitionDate, String closingDate, String value, String process, String document, String building, String floor, String complement, String situation) {
-		this.id = id;
-		this.description = description;
-		this.department = department;
-		this.mark = mark;
-		this.model = model;
-		this.serialNumber = serialNumber;
-		this.acquisitionDate = acquisitionDate;
-		this.closingDate = closingDate;
-		this.value = value;
-		this.process = process;
-		this.document = document;
-		this.building = building;
-		this.floor = floor;
-		this.complement = complement;
-		this.situation = situation;
-    }
 
     public Patrimony(String[] patrimony) {
 		this.id = patrimony[0];
@@ -112,6 +94,5 @@ public class Patrimony {
 		this.complement = patrimony[13];
 		this.situation = patrimony[14];
     }
-    */
 }
 
