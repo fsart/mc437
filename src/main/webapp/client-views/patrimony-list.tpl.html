@@ -1,0 +1,61 @@
+<h1>Patrimonio</h1>
+
+<form>
+    <fieldset>
+        <legend>Filtrar resultados</legend>
+
+        <div class="row large-4">
+            <div class="columns">
+                <label>Id</label>
+                <input type="text" ng-model="form.id" ng-change="filter(form)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+                <label>Descricao</label>
+                <input type="text" ng-model="form.description" ng-change="filter(form)">
+            </div>
+        </div>
+        <div class="row large-4">
+            <div class="columns large-4">
+                <label>Marca</label>
+                <input type="text" ng-model="form.mark" ng-change="filter(form)">
+            </div>
+            <div class="columns large-4">
+                <label>Modelo</label>
+                <input type="text" ng-model="form.model" ng-change="filter(form)">
+            </div>
+            <div class="columns large-4">
+                <label>Cor</label>
+                <input type="text" ng-model="form.color" ng-change="filter(form)">
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
+
+<table width="100%">
+    <thead>
+        <tr>
+            <th ng-click="sort('id')">Id</th>
+            <th ng-click="sort('description')">Descricao</th>
+            <th ng-click="sort('mark')">Marca</th>
+            <th ng-click="sort('model')">Modelo</th>
+            <th ng-click="sort('color')">Cor</th>
+            <th ng-click="sort('acquisitionDate')">Data de Aquisição</th>
+            <th ng-click="sort('closingDate')">Data de Encerramento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="patrimony in patrimonies">
+            <td>{{patrimony.id}}</td>
+            <td>{{patrimony.description}}</td>
+            <td>{{patrimony.mark}}</td>
+            <td>{{patrimony.model}}</td>
+            <td>{{patrimony.color}}</td>
+            <td>{{patrimony.acquisitionDate}}</td>
+            <td>{{patrimony.closingDate}}</td>
+        </tr>
+    </tbody>
+</table>
