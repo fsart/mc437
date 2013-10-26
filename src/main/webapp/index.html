@@ -1,0 +1,52 @@
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+
+        <title>Gerenciamento de Patrimonio</title>
+
+        <script type="text/javascript" src="/lib/angular.min.js"></script>
+        <script type="text/javascript" src="/lib/fileupload.min.js"></script>
+
+        <script type="text/javascript" src="/client-controllers/home.js"></script>
+        <script type="text/javascript" src="/client-controllers/session.js"></script>
+        <script type="text/javascript" src="/client-controllers/patrimony.js"></script>
+        <script type="text/javascript">
+            angular.module('app', ['app.home','app.session', 'app.patrimony']);
+        </script>
+        <link rel="stylesheet" href="/css/foundation.min.css">
+    </head>
+    <body>
+        <nav class="top-bar">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">Gerenciamento de Patrimonio</a></h1>
+                </li>
+            </ul>
+            <section class="top-bar-section">
+                <ul class="right" ng-show="user">
+                    <li>
+                        <a href="#/enviar-arquivo">Enviar arquivo</a>
+                    </li>
+                    <li class="divider hide-for-small"></li>
+                    <li>
+                        <a href="#/consultar-patrimonio">Consultar patrimonio</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-form">
+                        <a class="button alert" href="#/sair">Sair</a>
+                    </li>
+                </ul>
+                <ul class="right" ng-hide="user">
+                    <li class="has-form">
+                        <a class="button" href="#/entrar">Entrar</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <div class="row">
+            <section ng-view></section>
+        </div>
+    </body>
+</html>

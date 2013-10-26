@@ -1,0 +1,28 @@
+<h1>Autentique-se</h1>
+
+<div data-alert class="alert-box alert" ng-show="alert">
+    {{alert}}
+    <a href="#" class="close" ng-click="alert=null">&times;</a>
+</div>
+
+<form ng-submit="login(form)">
+    <fieldset>
+
+        <div class="row">
+            <div class="columns">
+                <label>User name</label>
+                <input type="text" placeholder="login" ng-model="form.user">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns">
+                <label>Password</label>
+                <input type="password" ng-model="form.password">
+            </div>
+        </div>
+
+    </fieldset>
+
+    <input type="submit" class="button" value="Entrar" />
+</form>
