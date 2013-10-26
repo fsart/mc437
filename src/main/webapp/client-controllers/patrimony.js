@@ -49,7 +49,7 @@ angular.module('app.patrimony', ['angularFileUpload']).config(function ($routePr
 
 
             $http.get('api/patrimonies').success(function (data) {
-            	patrimonies = data.patrimonies;
+            	patrimonies = data;
                 $scope.filter();
             });
         }
