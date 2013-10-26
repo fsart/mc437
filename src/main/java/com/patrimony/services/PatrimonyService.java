@@ -1,5 +1,7 @@
 package com.patrimony.services;
 
+import com.patrimony.*;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,33 +54,33 @@ public class PatrimonyService {
 
         return query.asList();
     }
-    
+
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
         File tempFile = createTempFile(uploadedInputStream);
-    
+
         Xlsx x = new Xlsx();
 
 		x.parse(tempFile);
-		
+
 		for(String key : x.sheets().keySet()) {
 		    String[][] mat;
 			mat = x.sheets().get(key);
-			
+
 			for(int i = 1; i < mat.length; i++) {
 			    Patrimony patrimony = new Patrimony(mat[i]);
 			    getDatastore().save(patrimony);
 			}
 		}
     }
-    
+
     private File createTempFile(InputStream uploadedInputStream) {
         File tempFile = null;
         try {
             tempFile = File.createTempFile((new Date()).toString(), ".tmp");
             tempFile.deleteOnExit();
-            
+
 			OutputStream out = new FileOutputStream(tempFile);
 			int read = 0;
 			byte[] bytes = new byte[1024];
@@ -86,14 +88,14 @@ public class PatrimonyService {
 			while ((read = uploadedInputStream.read(bytes)) != -1) {
 				out.write(bytes, 0, read);
 			}
-			
+
 			/*out.flush();
 			out.close();*/
 		} catch (IOException e) {
 		    tempFile = null;
  			e.printStackTrace();
 		}
-		
+
 		return tempFile;
     }
 }
