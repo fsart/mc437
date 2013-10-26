@@ -13,7 +13,14 @@ import org.bson.types.ObjectId;
 
 import com.sun.jersey.api.JResponse;
 
+import java.net.UnknownHostException;
 import com.google.code.morphia.Datastore;
+import com.google.code.morphia.Morphia;
+import com.mongodb.DB;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.BasicDBObject;
@@ -21,18 +28,27 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
-import com.patrimony.db.MongoResource;
 import com.patrimony.models.Patrimony;
 
-@Path("/patrimonies")
+@Path("patrimonies")
 @Consumes("application/json")
 public class PatrimonyService {
+
+    private Datastore getDatastore() {
+        try {
+            MongoClientURI uri = new MongoClientURI("mongodb://heroku:16eb1d52483d3cf12a776bd8785af2c5@paulo.mongohq.com:10079/app18759691");
+            MongoClient client = new MongoClient(uri);
+            return new Morphia().createDatastore(client, "app18759691");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     @GET
     @Produces("application/json")
     public List<Patrimony> list() {
-        Datastore DB = MongoResource.INSTANCE.getDatastore();
-        Query<Patrimony> query = DB.createQuery(Patrimony.class);
+        Query<Patrimony> query = getDatastore().createQuery(Patrimony.class);
 
         return query.asList();
     }
