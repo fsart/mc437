@@ -71,7 +71,6 @@ public class PatrimonyService {
     @POST
     @Path("patrimonies/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces("application/json")
     public Response upload() {
         /*
         File tempFile = Xlsx.createTempFile(uploadedInputStream);
