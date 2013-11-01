@@ -66,7 +66,11 @@ public class PatrimonyService {
         File tempFile = Xlsx.createTempFile(uploadedInputStream);
 
         Xlsx x = new Xlsx();
-		x.parse(tempFile);
+        try {
+		  x.parse(tempFile);
+        } catch (java.lang.Exception e) {
+
+        }
 
 		for(String key : x.sheets().keySet()) {
 		    String[][] mat;
