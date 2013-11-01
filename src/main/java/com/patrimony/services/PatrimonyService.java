@@ -85,8 +85,8 @@ public class PatrimonyService {
         return Response.status(200).build();
     }
 
-    private File createTempFile(InputStream uploadedInputStream) {
-        File tempFile = null;
+    private File createTempFile (InputStream uploadedInputStream) {
+        File tempFile;
         try {
             tempFile = File.createTempFile((new Date()).toString(), ".tmp");
             tempFile.deleteOnExit();
@@ -99,11 +99,10 @@ public class PatrimonyService {
 				out.write(bytes, 0, read);
 			}
 
-			/*out.flush();
-			out.close();*/
-		} catch (IOException e) {
+			out.flush();
+			out.close();
+		} catch (Exception e) {
 		    tempFile = null;
- 			e.printStackTrace();
 		}
 
 		return tempFile;
