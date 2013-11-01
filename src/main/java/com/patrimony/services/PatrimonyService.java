@@ -52,7 +52,7 @@ public class PatrimonyService {
     }
 
     @POST
-    @Path("/patrimonies/{file}")
+    @Path("patrimonies/{file}")
     @Produces("application/json")
     public Response upload(@PathParam("file") String file) {
         System.out.println(file);
