@@ -34,9 +34,9 @@ public class PatrimonyService {
 
     private Datastore getDatastore() {
         try {
-            MongoClientURI uri = new MongoClientURI("mongodb://heroku:16eb1d52483d3cf12a776bd8785af2c5@paulo.mongohq.com:10079/app18759691");
+            MongoClientURI uri = new MongoClientURI("mongodb://heroku:XKYi77uAz_oMJkqnS4aTQVtLTkQYg7f1i6lXMabz8LJF4eCH3xgjQukwukoaIuLWCDoa1x3VG7N6BawRfA0BoA@paulo.mongohq.com:10079/app1875969");
             MongoClient client = new MongoClient(uri);
-            return new Morphia().createDatastore(client, "app18759691");
+            return new Morphia().createDatastore(client, "app1875969");
         } catch (Exception e) {
             e.printStackTrace();
             return null;
