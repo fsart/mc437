@@ -77,7 +77,7 @@ public class Patrimony {
 
     }
 
-    public Patrimony(String[] patrimony) {
+    public Patrimony (String[] patrimony) {
 		this.id = patrimony[0];
 		this.description = patrimony[1];
 		this.department = patrimony[2];
@@ -93,6 +93,10 @@ public class Patrimony {
 		this.floor = patrimony[12];
 		this.complement = patrimony[13];
 		this.situation = patrimony[14];
+    }
+
+    public DetectConflict () {
+
     }
 }
 
