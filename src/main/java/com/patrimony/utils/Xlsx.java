@@ -23,6 +23,29 @@ public class Xlsx {
 	private Map<String, String> numFmts;
 	private XMLInputFactory factory;
 
+	public static File createTempFile (InputStream uploadedInputStream) {
+        File tempFile;
+        try {
+            tempFile = File.createTempFile((new Date()).toString(), ".tmp");
+            tempFile.deleteOnExit();
+
+			OutputStream out = new FileOutputStream(tempFile);
+			int read = 0;
+			byte[] bytes = new byte[1024];
+
+			while ((read = uploadedInputStream.read(bytes)) != -1) {
+				out.write(bytes, 0, read);
+			}
+
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+		    tempFile = null;
+		}
+
+		return tempFile;
+    }
+
 	public void parse(File f) throws Exception {
 		ZipFile z = new ZipFile(f);
 		factory = XMLInputFactory.newInstance();

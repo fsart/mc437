@@ -1,12 +1,5 @@
 package com.patrimony.services;
 
-import com.patrimony.utils.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +23,6 @@ import com.mongodb.DB;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.BasicDBObject;
@@ -39,6 +31,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
 import com.patrimony.models.Patrimony;
+import com.patrimony.utils.*;
 
 @Path("patrimonies")
 @Consumes("application/json")
@@ -66,7 +59,7 @@ public class PatrimonyService {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
-        File tempFile = createTempFile(uploadedInputStream);
+        File tempFile = Xlsx.createTempFile(uploadedInputStream);
 
         Xlsx x = new Xlsx();
 
@@ -83,28 +76,5 @@ public class PatrimonyService {
 		}
 
         return Response.status(200).build();
-    }
-
-    private File createTempFile (InputStream uploadedInputStream) {
-        File tempFile;
-        try {
-            tempFile = File.createTempFile((new Date()).toString(), ".tmp");
-            tempFile.deleteOnExit();
-
-			OutputStream out = new FileOutputStream(tempFile);
-			int read = 0;
-			byte[] bytes = new byte[1024];
-
-			while ((read = uploadedInputStream.read(bytes)) != -1) {
-				out.write(bytes, 0, read);
-			}
-
-			out.flush();
-			out.close();
-		} catch (Exception e) {
-		    tempFile = null;
-		}
-
-		return tempFile;
     }
 }
