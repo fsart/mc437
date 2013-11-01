@@ -82,8 +82,7 @@ public class PatrimonyService {
 			    getDatastore().save(patrimony);
 			}
 		}
-
-        return Response.status(200).build();
         */
+        return Response.status(200).build();
     }
 }
