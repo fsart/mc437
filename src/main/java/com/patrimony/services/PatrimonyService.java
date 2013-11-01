@@ -69,6 +69,7 @@ public class PatrimonyService {
     }
 
     @POST
+    @Produces("application/json")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
         /*
