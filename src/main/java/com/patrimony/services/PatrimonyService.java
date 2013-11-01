@@ -45,7 +45,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-@Path("patrimonies")
 public class PatrimonyService {
 
     private Datastore getDatastore() {
@@ -60,6 +59,7 @@ public class PatrimonyService {
     }
 
     @GET
+    @Path("patrimonies")
     @Consumes("application/json")
     @Produces("application/json")
     public List<Patrimony> list() {
@@ -69,8 +69,10 @@ public class PatrimonyService {
     }
 
     @POST
+    @Path("patrimonies/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
+    @Produces("application/json")
+    public Response upload(@FormDataParam("file") InputStream uploadedInputStream) {
         /*
         File tempFile = Xlsx.createTempFile(uploadedInputStream);
 
