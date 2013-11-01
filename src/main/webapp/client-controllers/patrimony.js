@@ -13,7 +13,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             $scope.upload = function () {
                 var fr = new FileReader();
                 fr.onload = function(e) {
-                    $http.post('api/patrimonies', {file : e.target.result}).success(function () {
+                    $http.post('api/patrimonies/' + e.target.result, {}).success(function () {
                         $location.path('/consultar-patrimonio');
                     });
                 };
