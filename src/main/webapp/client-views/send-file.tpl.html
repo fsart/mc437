@@ -1,12 +1,12 @@
 <h1>Enviar arquivo csv</h1>
 
-<form ng-submit="uploader.uploadAll()">
+<form ng-submit="upload(inputFile)">
     <fieldset>
 
         <div class="row">
             <div class="columns">
                 <label>Arquivo</label>
-                <input ng-file-select type="file" />
+                <input ng-file-select type="file" id="inputFile" />
             </div>
         </div>
 
