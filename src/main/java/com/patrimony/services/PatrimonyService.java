@@ -59,10 +59,11 @@ public class PatrimonyService {
 
         return query.asList();
     }
-/*
+
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
+        /*
         File tempFile = Xlsx.createTempFile(uploadedInputStream);
 
         Xlsx x = new Xlsx();
@@ -83,6 +84,6 @@ public class PatrimonyService {
 		}
 
         return Response.status(200).build();
+        */
     }
-    */
 }
