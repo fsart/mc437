@@ -1,4 +1,4 @@
-package com.patrimony.DB;
+package com.patrimony;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
