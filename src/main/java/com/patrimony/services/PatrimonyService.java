@@ -44,7 +44,6 @@ public class PatrimonyService {
     }
 
     @GET
-    @Consumes("application/json")
     @Produces("application/json")
     public List<Patrimony> list() {
         Query<Patrimony> query = getDatastore().createQuery(Patrimony.class);
@@ -53,7 +52,6 @@ public class PatrimonyService {
     }
 
     @POST
-    @Consumes("application/json")
     @Produces("application/json")
     public Response upload(@FormParam("file") String file) {
         System.out.println(file);
