@@ -54,6 +54,7 @@ public class PatrimonyService {
 
     @POST
     public Response upload(@FormParam("file") String file) {
+        System.out.println("----------------------- PORRA!! -----------------------");
         System.out.println(file);
         return Response.status(200).build();
     }
