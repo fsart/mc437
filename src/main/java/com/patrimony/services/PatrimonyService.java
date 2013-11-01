@@ -56,6 +56,7 @@ public class PatrimonyService {
     @Consumes("application/json")
     @Produces("application/json")
     public Response upload(@FormParam("file") String file) {
+        System.out.println(file);
         return Response.status(200).build();
     }
 }
