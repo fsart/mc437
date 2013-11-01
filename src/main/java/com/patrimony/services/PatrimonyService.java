@@ -29,7 +29,6 @@ import org.bson.types.ObjectId;
 
 import com.patrimony.models.Patrimony;
 
-@Path("patrimonies")
 public class PatrimonyService {
 
     private Datastore getDatastore() {
@@ -44,6 +43,7 @@ public class PatrimonyService {
     }
 
     @GET
+    @Path("patrimonies")
     @Produces("application/json")
     public List<Patrimony> list() {
         Query<Patrimony> query = getDatastore().createQuery(Patrimony.class);
@@ -52,8 +52,9 @@ public class PatrimonyService {
     }
 
     @POST
+    @Path("/patrimonies/{file}")
     @Produces("application/json")
-    public Response upload(@FormParam("file") String file) {
+    public Response upload(@PathParam("file") String file) {
         System.out.println(file);
         return Response.status(200).build();
     }
