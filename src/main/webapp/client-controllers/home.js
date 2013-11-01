@@ -8,6 +8,10 @@ angular.module('app.home', []).config(function ($routeProvider) {
                 return $location.path('/entrar');
             }
         }
+    }).
+    when('/contato', {
+        templateUrl : '/client-views/contact.tpl.html',
+        controller : function ($rootScope, $scope, $http, $location) {}
     });
 
 });
