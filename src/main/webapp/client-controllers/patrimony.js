@@ -10,8 +10,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                 return $location.path('/entrar');
             }
 
-            $scope.upload = function (files) {
-                console.log(files);
+            $scope.upload = function () {
                 var fr = new FileReader();
                 fr.onload = function(e) {
                     console.log(e.target.result);
@@ -20,7 +19,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                     });
                 };
 
-                fr.readAsText(files[0]);
+                fr.readAsText(document.getElementById('inputFile').files[0]);
             }
         }
     }).
