@@ -45,7 +45,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-@Path("patrimonies")
 @Consumes("application/json")
 public class PatrimonyService {
 
@@ -61,6 +60,7 @@ public class PatrimonyService {
     }
 
     @GET
+    @Path("patrimonies")
     @Produces("application/json")
     public List<Patrimony> list() {
         Query<Patrimony> query = getDatastore().createQuery(Patrimony.class);
@@ -69,6 +69,7 @@ public class PatrimonyService {
     }
 
     @POST
+    @Path("patrimonies/upload")
     @Produces("application/json")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@FormDataParam("file") InputStream uploadedInputStream) {
