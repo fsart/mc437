@@ -11,6 +11,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             }
 
             $scope.upload = function (files) {
+                console.log(files);
                 var fr = new FileReader();
                 fr.onload = function(e) {
                     console.log(e.target.result);
