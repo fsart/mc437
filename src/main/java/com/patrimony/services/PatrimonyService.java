@@ -13,6 +13,8 @@ import java.io.OutputStream;
 import java.io.IOException;
 
 import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
 import java.net.UnknownHostException;
@@ -36,6 +38,12 @@ import org.bson.types.ObjectId;
 
 import com.patrimony.models.Patrimony;
 import com.patrimony.utils.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 @Path("patrimonies")
 @Consumes("application/json")
