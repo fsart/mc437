@@ -1,23 +1,25 @@
-angular.module('app.patrimony', ['angularFileUpload']).config(function ($routeProvider) {
+angular.module('app.patrimony', []).config(function ($routeProvider) {
 
     $routeProvider.
     when('/enviar-arquivo', {
         templateUrl : '/client-views/send-file.tpl.html',
-        controller : function ($rootScope, $scope, $http, $location, $fileUploader) {
+        controller : function ($rootScope, $scope, $http, $location) {
             var uploader;
 
             if (!$rootScope.user) {
                 return $location.path('/entrar');
             }
 
-            $scope.uploader = $fileUploader.create({
-                scope : $scope,
-                url : 'api/patrimonies'
-            });
+            $scope.upload = function (files) {
+                var fr = new FileReader();
+                fr.onload = function(e) {
+                    $http.post('api/patrimonies', {file : e.target.result}).success(function () {
+                        $location.path('/consultar-patrimonio');
+                    });
+                };
 
-            $scope.uploader.bind('success', function (event, xhr, item) {
-                $location.path('/consultar-patrimonio');
-            });
+                fr.readAsText(files[0]);
+            }
         }
     }).
     when('/consultar-patrimonio', {

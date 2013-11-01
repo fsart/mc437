@@ -6,21 +6,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
+import javax.ws.rs.core.*;
 import javax.ws.rs.*;
 import javax.ws.rs.Consumes;
 
-import javax.ws.rs.core.*;
-import javax.ws.rs.core.MediaType;
 import java.net.UnknownHostException;
 import com.sun.jersey.api.JResponse;
-import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.multipart.FormDataParam;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
@@ -37,14 +28,8 @@ import com.mongodb.DBObject;
 import org.bson.types.ObjectId;
 
 import com.patrimony.models.Patrimony;
-import com.patrimony.utils.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
+@Path("patrimonies")
 public class PatrimonyService {
 
     private Datastore getDatastore() {
@@ -59,7 +44,6 @@ public class PatrimonyService {
     }
 
     @GET
-    @Path("patrimonies")
     @Consumes("application/json")
     @Produces("application/json")
     public List<Patrimony> list() {
@@ -69,28 +53,9 @@ public class PatrimonyService {
     }
 
     @POST
-    @Path("patrimonies/upload")
-    public Response upload() {
-        /*
-        File tempFile = Xlsx.createTempFile(uploadedInputStream);
-
-        Xlsx x = new Xlsx();
-        try {
-		  x.parse(tempFile);
-        } catch (java.lang.Exception e) {
-
-        }
-
-		for(String key : x.sheets().keySet()) {
-		    String[][] mat;
-			mat = x.sheets().get(key);
-
-			for(int i = 1; i < mat.length; i++) {
-			    Patrimony patrimony = new Patrimony(mat[i]);
-			    getDatastore().save(patrimony);
-			}
-		}
-        */
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response upload(@FormParam("file") String file) {
         return Response.status(200).build();
     }
 }
