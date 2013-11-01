@@ -94,9 +94,5 @@ public class Patrimony {
 		this.complement = patrimony[13];
 		this.situation = patrimony[14];
     }
-
-    public DetectConflict () {
-
-    }
 }
 
