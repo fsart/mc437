@@ -60,8 +60,8 @@ public class PatrimonyService {
     }
 
     @GET
-    @Produces("application/json")
     @Consumes("application/json")
+    @Produces("application/json")
     public List<Patrimony> list() {
         Query<Patrimony> query = getDatastore().createQuery(Patrimony.class);
 
@@ -69,8 +69,8 @@ public class PatrimonyService {
     }
 
     @POST
-    @Produces("application/json")
-    public Response upload() {
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response upload(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
         /*
         File tempFile = Xlsx.createTempFile(uploadedInputStream);
 
