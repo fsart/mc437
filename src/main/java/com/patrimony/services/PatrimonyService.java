@@ -13,7 +13,7 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 
 import com.patrimony.DB;
-import com.patrimony.utils;
+import com.patrimony.utils.Xlsx;
 import com.patrimony.models.Patrimony;
 
 @Path("patrimonies")
