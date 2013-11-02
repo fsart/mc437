@@ -1,6 +1,7 @@
 package com.patrimony.services;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.*;
@@ -12,6 +13,7 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 
 import com.patrimony.DB;
+import com.patrimony.utils;
 import com.patrimony.models.Patrimony;
 
 @Path("patrimonies")
@@ -27,7 +29,35 @@ public class PatrimonyService {
     }
 
     @POST
-    public Response upload(@FormParam("file") String file) {
-        return Response.status(200).build();
+    @Produces("application/json")
+    public List<String> upload(@FormParam("file") String file) {
+        ArrayList<String> conflicts = new ArrayList<String>();
+        Xlsx xlsx = new Xlsx();
+        xlsx.parse(createTempFile(uploadedInputStream));
+
+        for(String sheetKey : xlsx.sheets().keySet()) {
+            String[][] sheet = xlsx.sheets().get(sheetKey);
+
+            for(int i = 1; i < sheet.length; i++) {
+                Patrimony patrimony = new Patrimony(mat[i]);
+
+                for(String conflict : patrimony.conflicts()) {
+                    conflicts.add(conflict);
+                }
+            }
+        }
+
+        if (!hasConflict) {
+            for(String sheetKey : xlsx.sheets().keySet()) {
+                String[][] sheet = xlsx.sheets().get(sheetKey);
+
+                for(int i = 1; i < sheet.length; i++) {
+                    Patrimony patrimony = new Patrimony(mat[i]);
+
+                    DB.getDatastore().save(patrimony);
+                }
+            }
+        }
+        return conflicts;
     }
 }
