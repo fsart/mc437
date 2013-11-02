@@ -1,5 +1,7 @@
 package com.patrimony.utils;
 
+import java.util.Date;
+
 import java.io.File;
 import java.io.BufferedWriter;
 import java.io.InputStream;
@@ -38,26 +40,26 @@ public class Xlsx {
                 }
                 z.close();
         }
-        
+
          public void parse(String s) {
-         
+
              try{
-     
+
         	    //create a temp file
         	    File temp = File.createTempFile((new Date()).toString(), ".tmp");
-                tempFile.deleteOnExit();
+                temp.deleteOnExit();
 
         	    BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
         	    bw.write(s);
         	    bw.close();
         	    this.parse(temp);
-     
+
         	}catch(Exception e){
-     
+
         	    e.printStackTrace();
-     
+
         	}
-                
+
         }
 
         public Map<String, String[][]> sheets() {

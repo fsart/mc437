@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
+import com.patrimony.DB;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(value="patrimonies", noClassnameStored=true)
@@ -109,9 +111,9 @@ public class Patrimony {
             if (patrimony.department != this.department) conflicts.add("O item" + this.id + "possui departamento diferente do valor no banco de dados");
             if (patrimony.mark != this.mark) conflicts.add("O item" + this.id + "possui marca diferente do valor no banco de dados");
             if (patrimony.model != this.model) conflicts.add("O item" + this.id + "possui modelo diferente do valor no banco de dados");
-            if (patrimony.serialNumber != this.serial) conflicts.add("O item" + this.id + "possui numero serial diferente do valor no banco de dados");
-            if (patrimony.acquisitionDate != this.acquisition) conflicts.add("O item" + this.id + "possui data de aquisição diferente do valor no banco de dados");
-            if (patrimony.closingDate != this.closing) conflicts.add("O item" + this.id + "possui data de fechamento diferente do valor no banco de dados");
+            if (patrimony.serialNumber != this.serialNumber) conflicts.add("O item" + this.id + "possui numero serial diferente do valor no banco de dados");
+            if (patrimony.acquisitionDate != this.acquisitionDate) conflicts.add("O item" + this.id + "possui data de aquisição diferente do valor no banco de dados");
+            if (patrimony.closingDate != this.closingDate) conflicts.add("O item" + this.id + "possui data de fechamento diferente do valor no banco de dados");
             if (patrimony.value != this.value) conflicts.add("O item" + this.id + "possui valor diferente do valor no banco de dados");
             if (patrimony.process != this.process) conflicts.add("O item" + this.id + "possui processo diferente do valor no banco de dados");
             if (patrimony.document != this.document) conflicts.add("O item" + this.id + "possui documento diferente do valor no banco de dados");

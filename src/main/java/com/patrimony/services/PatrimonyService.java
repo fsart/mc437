@@ -31,28 +31,35 @@ public class PatrimonyService {
     @POST
     @Produces("application/json")
     public List<String> upload(@FormParam("file") String file) {
+        boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        xlsx.parse(createTempFile(uploadedInputStream));
+        xlsx.parse(file);
 
+        System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
             String[][] sheet = xlsx.sheets().get(sheetKey);
 
             for(int i = 1; i < sheet.length; i++) {
-                Patrimony patrimony = new Patrimony(mat[i]);
+                Patrimony patrimony = new Patrimony(sheet[i]);
+                System.out.println(patrimony.id);
 
                 for(String conflict : patrimony.conflicts()) {
+                    hasConflict = true;
+                    System.out.println(conflict);
                     conflicts.add(conflict);
                 }
             }
         }
 
+        System.out.println("------------------------ oi ------------------------");
         if (!hasConflict) {
+            System.out.println(" não tenho conflitos");
             for(String sheetKey : xlsx.sheets().keySet()) {
                 String[][] sheet = xlsx.sheets().get(sheetKey);
 
                 for(int i = 1; i < sheet.length; i++) {
-                    Patrimony patrimony = new Patrimony(mat[i]);
+                    Patrimony patrimony = new Patrimony(sheet[i]);
 
                     DB.getDatastore().save(patrimony);
                 }
