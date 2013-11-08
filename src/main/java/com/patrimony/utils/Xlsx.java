@@ -15,12 +15,13 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -34,24 +35,16 @@ public class Xlsx {
         private Map<String, String> numFmts;
         private XMLInputFactory factory;
 
-        public void parse(InputStream inputStream) {
-            try {
+        public static final String PREFIX = "stream2file";
+        public static final String SUFFIX = ".tmp";
 
-                // write the inputStream to a FileOutputStream
-                OutputStream outputStream = new FileOutputStream(new File("./test"));
-
-                int read = 0;
-                byte[] bytes = new byte[1024];
-
-                while ((read = inputStream.read(bytes)) != -1) {
-                    outputStream.write(bytes, 0, read);
-                }
-
-                System.out.println("---------------Done!---------------");
-                parse(new File("./test"));
-            } catch (Exception e) {
-                e.printStackTrace();
+        public static File stream2file (InputStream in) throws IOException {
+            final File tempFile = File.createTempFile(PREFIX, SUFFIX);
+            tempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                IOUtils.copy(in, out);
             }
+            return tempFile;
         }
 
         public void parse(File f) throws Exception {
