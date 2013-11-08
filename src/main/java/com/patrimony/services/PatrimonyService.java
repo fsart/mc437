@@ -34,7 +34,11 @@ public class PatrimonyService {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        xlsx.parse(new String(file, "UTF-8"));
+        try {
+            xlsx.parse(new String(file, "UTF-8"));
+        } catch (java.io.UnsupportedEncodingException e) {
+            System.out.println("------------------------ fudeu ------------------------");
+        }
 
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
