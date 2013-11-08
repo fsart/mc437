@@ -34,7 +34,7 @@ public class Xlsx {
         private Map<String, String> numFmts;
         private XMLInputFactory factory;
 
-        public static void parse(InputStream inputStream) {
+        public void parse(InputStream inputStream) {
             try {
 
                 // write the inputStream to a FileOutputStream
@@ -55,17 +55,17 @@ public class Xlsx {
         }
 
         public void parse(File f) throws Exception {
-                ZipFile z = new ZipFile(f);
-                factory = XMLInputFactory.newInstance();
-                parseWorkbook(z.getInputStream(z.getEntry("xl/workbook.xml")));
-                ZipEntry ss = z.getEntry("xl/sharedStrings.xml");
-                if (ss != null)
-                        parseSharedStrings(z.getInputStream(ss));
-                parseStyles(z.getInputStream(z.getEntry("xl/styles.xml")));
-                for (Map.Entry e : this.sheets.entrySet()) {
-                        e.setValue(parseSheet(z.getInputStream(z.getEntry("xl/worksheets/sheet1.xml"))));
-                }
-                z.close();
+            ZipFile z = new ZipFile(f);
+            factory = XMLInputFactory.newInstance();
+            parseWorkbook(z.getInputStream(z.getEntry("xl/workbook.xml")));
+            ZipEntry ss = z.getEntry("xl/sharedStrings.xml");
+            if (ss != null)
+                    parseSharedStrings(z.getInputStream(ss));
+            parseStyles(z.getInputStream(z.getEntry("xl/styles.xml")));
+            for (Map.Entry e : this.sheets.entrySet()) {
+                    e.setValue(parseSheet(z.getInputStream(z.getEntry("xl/worksheets/sheet1.xml"))));
+            }
+            z.close();
         }
 
         public Map<String, String[][]> sheets() {
