@@ -38,6 +38,7 @@ public class PatrimonyService {
             xlsx.parse(new String(file, "UTF-8"));
         } catch (java.io.UnsupportedEncodingException e) {
             System.out.println("------------------------ fudeu ------------------------");
+
         }
 
         System.out.println("------------------------ oi ------------------------");

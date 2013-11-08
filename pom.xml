@@ -49,12 +49,6 @@
             <artifactId>jersey-json</artifactId>
             <version>1.17.1</version>
         </dependency>
-        
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-multipart</artifactId>
-            <version>1.8</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -119,12 +113,6 @@
     </build>
 
     <repositories>
-        <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${project.basedir}/repo</url>
-        </repository>
-
         <repository>
             <id>Morphia Repository</id>
             <url>http://morphia.googlecode.com/svn/mavenrepo/</url>
