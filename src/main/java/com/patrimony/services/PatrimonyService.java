@@ -43,6 +43,7 @@ public class PatrimonyService {
     public List<String> upload(@PathParam("id") ObjectId patrimonyId) throws Exception {
         Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class);.field("_id").equal(patrimonyId);
 
+
     }
     */
 }
