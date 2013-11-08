@@ -17,7 +17,7 @@ import java.io.OutputStream;
 
 public class Xlsx {
 
-    public static void read (InputStream inputStream) {
+    public static void read (File inputStream) {
         try {
             XSSFWorkbook wb = new XSSFWorkbook(inputStream);
             XSSFSheet ws = wb.getSheet("Input");
