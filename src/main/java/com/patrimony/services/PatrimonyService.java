@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 import javax.ws.rs.core.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.*;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
@@ -26,13 +30,14 @@ public class PatrimonyService {
     }
 
     @POST
+    @Consumes("multipart/form-data")
     @Produces("application/json")
-    public List<String> upload(@FormParam("file") String file) {
+    public List<String> upload(@FormParam("file") InputStream file) throws Exception {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
         try {
-            xlsx.parse(new String(file.getBytes(), "UTF-8"));
+            xlsx.parse(file);
         } catch (java.io.UnsupportedEncodingException e) {
             System.out.println("------------------------ fudeu ------------------------");
 
