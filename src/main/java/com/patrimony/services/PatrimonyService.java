@@ -14,10 +14,10 @@ import com.google.code.morphia.query.Query;
 import com.patrimony.DB;
 import com.patrimony.models.Patrimony;
 
+@Path("patrimonies")
 public class PatrimonyService {
 
     @GET
-    @Path("patrimonies")
     @Consumes("application/json")
     @Produces("application/json")
     public List<Patrimony> list() {
