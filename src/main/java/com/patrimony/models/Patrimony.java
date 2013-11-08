@@ -11,12 +11,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
+import org.bson.types.ObjectId;
+
 import com.patrimony.DB;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(value="patrimonies", noClassnameStored=true)
 public class Patrimony {
+
+    @XmlElement(name = "_id")
+    private ObjectId _id;
 
     @Property("id")
     @XmlElement(name = "id")
