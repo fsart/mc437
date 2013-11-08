@@ -27,7 +27,7 @@ public class PatrimonyService {
 
     @POST
     @Produces("application/json")
-    public List<String> upload(@FormParam("file") byte[] file) {
+    public List<String> upload(@FormParam("file") String file) {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
