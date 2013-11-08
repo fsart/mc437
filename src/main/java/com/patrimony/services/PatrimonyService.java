@@ -32,7 +32,7 @@ public class PatrimonyService {
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
         try {
-            xlsx.parse(new String(file, "UTF-8"));
+            xlsx.parse(new String(file.getBytes(), "UTF-8"));
         } catch (java.io.UnsupportedEncodingException e) {
             System.out.println("------------------------ fudeu ------------------------");
 
