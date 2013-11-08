@@ -15,7 +15,7 @@ import com.google.code.morphia.query.Query;
 import com.patrimony.DB;
 import com.patrimony.models.PlaceChange;
 
-@Path("place-change")
+@Path("placechange")
 public class PlaceChangeService {
 
     @GET
@@ -28,6 +28,7 @@ public class PlaceChangeService {
     }
 
     @POST
+    @Consumes("application/json")
     public JResponse upload(
         @FormDataParam("patrimonyId") ObjectId patrimonyId,
         @FormDataParam("building") String building,
