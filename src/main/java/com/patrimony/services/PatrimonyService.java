@@ -33,8 +33,8 @@ public class PatrimonyService {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        System.out.println("--------------------------------------");
-        xlsx.parse(xlsx.parse(file));
+        File f = xlsx.parse(file);
+        xlsx.parse(f);
 
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
