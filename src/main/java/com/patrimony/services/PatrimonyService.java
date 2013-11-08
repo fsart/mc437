@@ -1,5 +1,7 @@
 package com.patrimony.services;
 
+import java.io.File;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.InputStream;
