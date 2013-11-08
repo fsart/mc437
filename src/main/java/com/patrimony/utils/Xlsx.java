@@ -42,7 +42,7 @@ public class Xlsx {
             final File tempFile = File.createTempFile(PREFIX, SUFFIX);
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
-                System.out.println('OLA!!');
+                System.out.println("OLA!!");
                 IOUtils.copy(in, out);
             }
             return tempFile;
