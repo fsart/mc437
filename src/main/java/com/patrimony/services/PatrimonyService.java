@@ -75,6 +75,6 @@ public class PatrimonyService {
             }
         }
         return conflicts;*/
-        return null
+        return null;
     }
 }
