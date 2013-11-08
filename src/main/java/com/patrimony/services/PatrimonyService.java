@@ -2,7 +2,7 @@ package com.patrimony.services;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
+import java.io.InputStream;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
@@ -29,12 +29,11 @@ public class PatrimonyService {
 
     @POST
     @Consumes("multipart/form-data")
-    public List<String> upload(File file) throws Exception {
+    public List<String> upload(@FormParam("file") InputStream file) throws Exception {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
         System.out.println("--------------------------------------");
-        System.out.println(file.toString());
         xlsx.parse(file);
 
         System.out.println("------------------------ oi ------------------------");

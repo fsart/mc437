@@ -15,6 +15,12 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
@@ -26,6 +32,26 @@ public class Xlsx {
         private String[] styles;
         private Map<String, String> numFmts;
         private XMLInputFactory factory;
+
+        public static void parse(InputStream inputStream) {
+            try {
+
+                // write the inputStream to a FileOutputStream
+                OutputStream outputStream = new FileOutputStream(new File("test"));
+
+                int read = 0;
+                byte[] bytes = new byte[1024];
+
+                while ((read = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, read);
+                }
+
+                System.out.println("---------------Done!---------------");
+                this.parse(new File("test"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         public void parse(File f) throws Exception {
                 ZipFile z = new ZipFile(f);
@@ -39,27 +65,6 @@ public class Xlsx {
                         e.setValue(parseSheet(z.getInputStream(z.getEntry("xl/worksheets/sheet1.xml"))));
                 }
                 z.close();
-        }
-
-         public void parse(String s) {
-
-             try{
-
-        	    //create a temp file
-        	    File temp = File.createTempFile((new Date()).toString(), ".tmp");
-                temp.deleteOnExit();
-
-        	    BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
-        	    bw.write(s);
-        	    bw.close();
-        	    this.parse(temp);
-
-        	}catch(Exception e){
-
-        	    e.printStackTrace();
-
-        	}
-
         }
 
         public Map<String, String[][]> sheets() {
