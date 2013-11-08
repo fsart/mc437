@@ -33,8 +33,7 @@ public class PatrimonyService {
 
     @POST
     @Consumes("multipart/form-data")
-    @Produces("application/json")
-    public List<String> upload(@FormParam("file") InputStream file) throws Exception {
+    public void upload(InputStream file) throws Exception {
         /*boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
