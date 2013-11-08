@@ -35,8 +35,7 @@ public class PatrimonyService {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        xlsx.parse(file);
-        xlsx.read();
+        xlsx.read(file);
 /*
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {

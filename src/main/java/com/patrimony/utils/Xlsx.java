@@ -17,32 +17,9 @@ import java.io.OutputStream;
 
 public class Xlsx {
 
-    public static void parse (InputStream inputStream) {
+    public static void read (InputStream inputStream) {
         try {
-            // write the inputStream to a FileOutputStream
-            OutputStream outputStream = new FileOutputStream(new File("./temp.xlsx"));
-
-            int read = 0;
-            byte[] bytes = new byte[1024];
-
-            while ((read = inputStream.read(bytes)) != -1) {
-                outputStream.write(bytes, 0, read);
-            }
-            inputStream.close();
-            outputStream.close();
-
-            System.out.println("Done!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void read () {
-        try {
-            File excel =  new File ("./temp.xlsx");
-            FileInputStream fis = new FileInputStream(excel);
-            XSSFWorkbook wb = new XSSFWorkbook(fis);
+            XSSFWorkbook wb = new XSSFWorkbook(InputStream inputStream);
             XSSFSheet ws = wb.getSheet("Input");
 
             int rowNum = ws.getLastRowNum() + 1;
