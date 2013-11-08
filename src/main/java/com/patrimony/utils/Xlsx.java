@@ -37,8 +37,7 @@ public class Xlsx {
         public static final String PREFIX = "stream2file";
         public static final String SUFFIX = ".xlsx";
 
-        public static File parse (InputStream inputStream) throws IOException {
-
+        public static File parse (InputStream inputStream) {
             OutputStream outputStream = null;
 
             try {
@@ -59,7 +58,7 @@ public class Xlsx {
 
                 System.out.println("Done!");
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
