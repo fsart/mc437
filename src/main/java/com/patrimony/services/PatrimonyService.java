@@ -33,7 +33,7 @@ public class PatrimonyService {
 
     @POST
     @Consumes("multipart/form-data")
-    public void upload(InputStream file) throws Exception {
+    public boolean upload(InputStream file) throws Exception {
         /*boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
@@ -74,6 +74,6 @@ public class PatrimonyService {
             }
         }
         return conflicts;*/
-        return null;
+        return true;
     }
 }
