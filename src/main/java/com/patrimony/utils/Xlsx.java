@@ -38,7 +38,7 @@ public class Xlsx {
             try {
 
                 // write the inputStream to a FileOutputStream
-                OutputStream outputStream = new FileOutputStream(new File("test"));
+                OutputStream outputStream = new FileOutputStream(new File("./test"));
 
                 int read = 0;
                 byte[] bytes = new byte[1024];
@@ -48,7 +48,7 @@ public class Xlsx {
                 }
 
                 System.out.println("---------------Done!---------------");
-                this.parse(new File("test"));
+                parse(new File("./test"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
