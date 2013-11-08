@@ -37,13 +37,5 @@ public class PatrimonyService {
         xlsx.read(file);
         return conflicts;
     }
-
-    @PUT
-    @Path("patrimonies/{id}")
-    public List<String> upload(@PathParam("id") ObjectId patrimonyId) throws Exception {
-        Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class);.field("_id").equal(patrimonyId);
-
-
-    }
     */
 }
