@@ -19,7 +19,7 @@ public class Xlsx {
 
     public static void read (InputStream inputStream) {
         try {
-            XSSFWorkbook wb = new XSSFWorkbook(InputStream inputStream);
+            XSSFWorkbook wb = new XSSFWorkbook(inputStream);
             XSSFSheet ws = wb.getSheet("Input");
 
             int rowNum = ws.getLastRowNum() + 1;
