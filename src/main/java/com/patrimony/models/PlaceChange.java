@@ -21,10 +21,10 @@ import com.patrimony.DB;
 public class PlaceChange {
 
     @XmlElement(name = "_id")
-    private ObjectId _id;
+    public ObjectId _id;
 
     @XmlElement(name = "patrimonyId")
-    private ObjectId patrimonyId;
+    public ObjectId patrimonyId;
 
     @Property("building")
     @XmlElement(name = "building")

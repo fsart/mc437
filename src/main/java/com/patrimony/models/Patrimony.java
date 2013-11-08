@@ -21,7 +21,7 @@ import com.patrimony.DB;
 public class Patrimony {
 
     @XmlElement(name = "_id")
-    private ObjectId _id;
+    public ObjectId _id;
 
     @Property("id")
     @XmlElement(name = "id")
