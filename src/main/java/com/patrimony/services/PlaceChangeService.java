@@ -6,6 +6,7 @@ import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.*;
 import com.sun.jersey.api.JResponse;
+import com.sun.jersey.multipart.FormDataParam;
 
 import org.bson.types.ObjectId;
 import com.google.code.morphia.Datastore;
