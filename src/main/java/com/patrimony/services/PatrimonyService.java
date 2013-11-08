@@ -35,9 +35,9 @@ public class PatrimonyService {
     @Consumes("multipart/form-data")
     @Produces("application/json")
     public List<String> upload(@FormParam("file") InputStream file) throws Exception {
-        boolean hasConflict = false;
+        /*boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
-        /*Xlsx xlsx = new Xlsx();
+        Xlsx xlsx = new Xlsx();
         try {
             xlsx.parse(file);
         } catch (java.io.UnsupportedEncodingException e) {
@@ -73,7 +73,8 @@ public class PatrimonyService {
                     DB.getDatastore().save(patrimony);
                 }
             }
-        }*/
-        return conflicts;
+        }
+        return conflicts;*/
+        return null
     }
 }
