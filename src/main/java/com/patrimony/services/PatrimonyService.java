@@ -37,7 +37,7 @@ public class PatrimonyService {
         Xlsx xlsx = new Xlsx();
         xlsx.parse(file);
         xlsx.parse();
-
+/*
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
             String[][] sheet = xlsx.sheets().get(sheetKey);
@@ -66,7 +66,7 @@ public class PatrimonyService {
                     DB.getDatastore().save(patrimony);
                 }
             }
-        }
+        }*/
         return conflicts;
     }
 }
