@@ -28,16 +28,18 @@ public class PlaceChangeService {
 
     @POST
     public JResponse upload(
+        @FormDataParam("patrimonyId") ObjectId patrimonyId,
         @FormDataParam("building") String building,
         @FormDataParam("floor") String floor,
         @FormDataParam("complement") String complement
     ) throws Exception {
         PlaceChange placeChange = new PlaceChange();
+        placeChange.patrimonyId = patrimonyId;
         placeChange.building = building;
         placeChange.floor = floor;
         placeChange.complement = complement;
         DB.getDatastore().save(placeChange);
 
-        return JResponse.ok().status(200).build()
+        return JResponse.ok().status(200).build();
     }
 }
