@@ -1,7 +1,5 @@
 package com.patrimony.services;
 
-import java.io.File;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.io.InputStream;
@@ -35,7 +33,7 @@ public class PatrimonyService {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        File f = xlsx.parse(file);
+        xlsx.parse(file);
         xlsx.parse(new File("temp.xlsx"));
 
         System.out.println("------------------------ oi ------------------------");
