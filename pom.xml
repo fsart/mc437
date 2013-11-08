@@ -43,6 +43,22 @@
             <artifactId>jersey-json</artifactId>
             <version>1.17.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-multipart</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jvnet</groupId>
+                    <artifactId>mimepull</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jvnet.mimepull</groupId>
+            <artifactId>mimepull</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
