@@ -17,9 +17,10 @@ import java.io.OutputStream;
 
 public class Xlsx {
 
-    public static void read (File inputStream) {
+    public static void read (File file) {
         try {
-            XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+            FileInputStream fis = new FileInputStream(file);
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet ws = wb.getSheet("Input");
 
             int rowNum = ws.getLastRowNum() + 1;
