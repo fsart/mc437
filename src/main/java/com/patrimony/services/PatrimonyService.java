@@ -30,11 +30,11 @@ public class PatrimonyService {
 
     @POST
     @Produces("application/json")
-    public List<String> upload(@FormParam("file") String file) {
+    public List<String> upload(@FormParam("file") byte[] file) {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        xlsx.parse(file);
+        xlsx.parse(new String(file, "UTF-8"));
 
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
