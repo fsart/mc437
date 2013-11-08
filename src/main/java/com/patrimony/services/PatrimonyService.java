@@ -3,14 +3,10 @@ package com.patrimony.services;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
-import java.io.InputStream;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.*;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
@@ -33,16 +29,11 @@ public class PatrimonyService {
 
     @POST
     @Consumes("multipart/form-data")
-    public boolean upload(InputStream file) throws Exception {
-        /*boolean hasConflict = false;
+    public List<String> upload(File file) throws Exception {
+        boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
-        try {
-            xlsx.parse(file);
-        } catch (java.io.UnsupportedEncodingException e) {
-            System.out.println("------------------------ fudeu ------------------------");
-
-        }
+        xlsx.parse(file);
 
         System.out.println("------------------------ oi ------------------------");
         for(String sheetKey : xlsx.sheets().keySet()) {
@@ -73,7 +64,6 @@ public class PatrimonyService {
                 }
             }
         }
-        return conflicts;*/
-        return true;
+        return conflicts;
     }
 }
