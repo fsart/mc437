@@ -9,7 +9,6 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-
     <display-name>Patrimony Service</display-name>
 
     <servlet>

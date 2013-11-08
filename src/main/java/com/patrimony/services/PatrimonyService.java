@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.*;
-import javax.ws.rs.Consumes;
-
-import com.sun.jersey.api.JResponse;
 
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
