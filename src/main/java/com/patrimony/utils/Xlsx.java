@@ -38,14 +38,9 @@ public class Xlsx {
         public static final String SUFFIX = ".xlsx";
 
         public static void parse (InputStream inputStream) {
-            OutputStream outputStream = null;
-
             try {
-                // read this file into InputStream
-                inputStream = new FileInputStream("/Users/mkyong/Downloads/holder.js");
-
                 // write the inputStream to a FileOutputStream
-                outputStream = new FileOutputStream(new File("./temp.xlsx"));
+                OutputStream outputStream = new FileOutputStream(new File("./temp.xlsx"));
 
                 int read = 0;
                 byte[] bytes = new byte[1024];
