@@ -34,7 +34,7 @@ public class PatrimonyService {
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
         System.out.println("--------------------------------------");
-        System.out.println(file.getName());
+        System.out.println(file.toString());
         xlsx.parse(file);
 
         System.out.println("------------------------ oi ------------------------");
