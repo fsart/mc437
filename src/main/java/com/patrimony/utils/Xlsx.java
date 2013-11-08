@@ -45,7 +45,7 @@ public class Xlsx {
                 inputStream = new FileInputStream("/Users/mkyong/Downloads/holder.js");
 
                 // write the inputStream to a FileOutputStream
-                outputStream = new FileOutputStream(new File("temp.xlsx"));
+                outputStream = new FileOutputStream(new File("./temp.xlsx"));
 
                 int read = 0;
                 byte[] bytes = new byte[1024];
