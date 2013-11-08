@@ -29,7 +29,7 @@ public class PatrimonyService {
 
     @POST
     @Consumes("multipart/form-data")
-    public List<String> upload(@FormParam("file") InputStream file) throws Exception {
+    public List<String> upload(InputStream file) throws Exception {
         boolean hasConflict = false;
         ArrayList<String> conflicts = new ArrayList<String>();
         Xlsx xlsx = new Xlsx();
