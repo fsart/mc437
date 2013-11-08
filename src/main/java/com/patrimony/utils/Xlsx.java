@@ -37,7 +37,7 @@ public class Xlsx {
         public static final String PREFIX = "stream2file";
         public static final String SUFFIX = ".xlsx";
 
-        public static File parse (InputStream inputStream) {
+        public static void parse (InputStream inputStream) {
             OutputStream outputStream = null;
 
             try {
