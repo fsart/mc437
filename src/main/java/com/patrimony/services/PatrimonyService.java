@@ -3,6 +3,7 @@ package com.patrimony.services;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
+import java.io.InputStream;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
