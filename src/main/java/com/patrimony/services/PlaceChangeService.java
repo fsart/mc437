@@ -15,7 +15,7 @@ import com.google.code.morphia.query.Query;
 import com.patrimony.DB;
 import com.patrimony.models.PlaceChange;
 
-@Path("placechange")
+@Path("place-change")
 public class PlaceChangeService {
 
     @GET
@@ -28,18 +28,8 @@ public class PlaceChangeService {
     }
 
     @POST
-    @Consumes("application/json")
-    public JResponse upload(
-        @FormDataParam("patrimonyId") ObjectId patrimonyId,
-        @FormDataParam("building") String building,
-        @FormDataParam("floor") String floor,
-        @FormDataParam("complement") String complement
-    ) throws Exception {
-        PlaceChange placeChange = new PlaceChange();
-        placeChange.patrimonyId = patrimonyId;
-        placeChange.building = building;
-        placeChange.floor = floor;
-        placeChange.complement = complement;
+    @Consumes(MediaType.APPLICATION_JSON)
+    public JResponse upload(PlaceChange placeChange) {
         DB.getDatastore().save(placeChange);
 
         return JResponse.ok().status(200).build();
