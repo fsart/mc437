@@ -50,6 +50,10 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
             $http.get('api/patrimonies').success(function (data) {
             	patrimonies = data;
+                patrimonies = patrimonies.map(function (patrimony) {
+                    patrimony.uri = encodeURIComponent(patrimony.id);
+                    return patrimony;
+                });
                 $scope.filter();
             });
         }
