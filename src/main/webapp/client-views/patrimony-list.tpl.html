@@ -49,7 +49,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="patrimony in patrimonies">
-            <td><a class="button" ng-href="#/{{patrimony.id}}/alterar-localizacao" /></td>
+            <td><a class="button" ng-href="#/{{encodeURIComponent(patrimony.id)}}/alterar-localizacao" /></td>
             <td>{{patrimony.id}}</td>
             <td>{{patrimony.description}}</td>
             <td>{{patrimony.mark}}</td>
