@@ -38,6 +38,7 @@
 <table width="100%">
     <thead>
         <tr>
+            <th></th>
             <th ng-click="sort('id')">PI Nº</th>
             <th ng-click="sort('description')">Descricao</th>
             <th ng-click="sort('mark')">Marca</th>
@@ -48,6 +49,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="patrimony in patrimonies">
+            <td><a class="button" href="/{{patrimony._id}}/alterar-localizacao" /></td>
             <td>{{patrimony.id}}</td>
             <td>{{patrimony.description}}</td>
             <td>{{patrimony.mark}}</td>

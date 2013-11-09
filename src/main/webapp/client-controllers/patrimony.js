@@ -4,22 +4,20 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
     when('/enviar-arquivo', {
         templateUrl : '/client-views/send-file.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
-            var uploader;
 
-            if (!$rootScope.user) {
-                return $location.path('/entrar');
-            }
+        }
+    }).
+    when('/:id/alterar-localizacao', {
+        templateUrl : '/client-views/place-change.tpl.html',
+        controller : function ($rootScope, $scope, $http, $location, $routeParams) {
 
-            $scope.upload = function () {
-                var fr = new FileReader();
-                fr.onload = function(e) {
-                    $http.post('api/patrimonies/', 'file=' + btoa(e.target.result.toString()), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).success(function () {
-                        $location.path('/consultar-patrimonio');
-                    });
-                };
-
-                fr.readAsText(document.getElementById('inputFile').files[0]);
-            }
+            $scope.form = {'patrimonyId' : $routeParams.id};
+            $scope.change = function (form) {
+                $http.post('/api/place-change', form).success(function () {
+                    $rootScope.message = 'requisição de alteração enviada';
+                    $location.path('/consultar-patrimonio');
+                });
+            };
         }
     }).
     when('/consultar-patrimonio', {
