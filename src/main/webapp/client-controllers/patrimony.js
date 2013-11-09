@@ -12,8 +12,8 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
         controller : function ($rootScope, $scope, $http, $location, $routeParams) {
 
             $scope.form = {'patrimonyId' : $routeParams.id};
-            $scope.change = function (form) {
-                $http.post('/api/place-change', form).success(function () {
+            $scope.save = function () {
+                $http.post('/api/place-change', $scope.form).success(function () {
                     $rootScope.message = 'requisição de alteração enviada';
                     $location.path('/consultar-patrimonio');
                 });
