@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
