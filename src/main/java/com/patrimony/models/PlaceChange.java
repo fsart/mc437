@@ -24,7 +24,7 @@ public class PlaceChange {
     public ObjectId _id;
 
     @XmlElement(name = "patrimonyId")
-    public ObjectId patrimonyId;
+    public String patrimonyId;
 
     @Property("building")
     @XmlElement(name = "building")
