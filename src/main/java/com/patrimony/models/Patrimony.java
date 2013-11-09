@@ -20,6 +20,7 @@ import com.patrimony.DB;
 @Entity(value="patrimonies", noClassnameStored=true)
 public class Patrimony {
 
+    @Id
     @XmlElement(name = "_id")
     public ObjectId _id;
 
