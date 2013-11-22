@@ -25,18 +25,19 @@
             </ul>
             <section class="top-bar-section">
                 <ul class="right" ng-show="user">
+                    <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
                     <li ng-show="user.type == 'admin'">
                         <a href="#/cadastrar-usuario">Cadastrar Usuário</a>
                     </li>
                     <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
-                    <li>
+                    <li ng-show="user.type == 'admin'">
                         <a href="#/notificacoes">Notificações</a>
                     </li>
                     <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
-                    <li>
-                        <a href="#/enviar-arquivo" ng-show="user.type == 'admin'">Enviar arquivo</a>
+                    <li ng-show="user.type == 'admin'">
+                        <a href="#/enviar-arquivo">Enviar arquivo</a>
                     </li>
-                    <li class="divider hide-for-small"></li>
+                    <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
                     <li>
                         <a href="#/consultar-patrimonio">Consultar patrimonio</a>
                     </li>
@@ -58,6 +59,17 @@
         </nav>
 
         <div class="row">
+
+            <div data-alert class="alert-box alert" ng-show="alert">
+                {{alert}}
+                <a href="#" class="close" ng-click="alert=null">&times;</a>
+            </div>
+
+            <div data-alert class="alert-box success" ng-show="message">
+                {{message}}
+                <a href="#" class="close" ng-click="message=null">&times;</a>
+            </div>
+
             <section ng-view></section>
         </div>
     </body>

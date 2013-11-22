@@ -12,12 +12,16 @@ angular.module('app.placeChange', []).config(function ($routeProvider) {
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
                 $scope.patrimony = data;
                 $scope.form = {'patrimonyId' : $routeParams.id, building : data.building, floor : data.floor, complement : data.complement};
+            }).error(function () {
+                $rootScope.alert = 'ocorreu um erro no servidor';
             });
 
             $scope.save = function () {
                 $http.post('/api/place-change', $scope.form).success(function () {
                     $rootScope.message = 'requisição de alteração enviada';
                     $location.path('/consultar-patrimonio');
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
                 });
             };
         }
@@ -30,11 +34,21 @@ angular.module('app.placeChange', []).config(function ($routeProvider) {
             }
 
             $scope.confirm = function (placeChange) {
-                $http.put('/api/place-change/' + placeChange._id + '/confirm').success($scope.load);
+                $http.put('/api/place-change/' + placeChange._id + '/confirm').success(function () {
+                    $rootScope.message = 'alteração confirmada';
+                    $scope.load();
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
+                });
             };
 
             $scope.cancel = function (placeChange) {
-                $http.put('/api/place-change/' + placeChange._id + '/cancel').success($scope.load);
+                $http.put('/api/place-change/' + placeChange._id + '/cancel').success(function () {
+                    $rootScope.message = 'alteração cancelada';
+                    $scope.load();
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
+                });
             };
 
             $scope.load = function () {
@@ -62,6 +76,8 @@ angular.module('app.placeChange', []).config(function ($routeProvider) {
                             $scope.placeChanges.push(data[i]);
                         }
                     }
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
                 });
             };
             $scope.load();

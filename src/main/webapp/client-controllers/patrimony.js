@@ -8,7 +8,6 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             if (!$rootScope.user) {
                 return $location.path('/entrar');
             }
-
         }
     }).
     when('/patrimonio/:id', {
@@ -37,6 +36,8 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                     $scope.patrimony.building = 'INOVA';
                     break;
                 }
+            }).error(function () {
+                $rootScope.alert = 'ocorreu um erro no servidor';
             });
         }
     }).
@@ -71,6 +72,8 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             $http.get('api/patrimonies').success(function (data) {
                 patrimonies = data;
                 $scope.filter();
+            }).error(function () {
+                $rootScope.alert = 'ocorreu um erro no servidor';
             });
         }
     });

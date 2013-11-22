@@ -11,8 +11,10 @@ angular.module('app.session', []).config(function ($routeProvider) {
                         $rootScope.user = user;
                         $location.path('/');
                     } else {
-                        $scope.alert = 'Login ou senha invalidos';
+                        $rootScope.alert = 'Login ou senha invalidos';
                     }
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
                 });
             };
         }
@@ -31,7 +33,10 @@ angular.module('app.session', []).config(function ($routeProvider) {
 
             $scope.save = function () {
                 $http.post('/api/users', $scope.form).success(function () {
+                    $rootScope.message = 'usuário criado com sucesso';
                     $location.path('/');
+                }).error(function () {
+                    $rootScope.alert = 'ocorreu um erro no servidor';
                 });
             };
         }
