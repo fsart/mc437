@@ -17,7 +17,6 @@ import com.patrimony.DB;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(value="place_changes", noClassnameStored=true)
 public class PlaceChange {
-
     @Id
     public String _id = new ObjectId().toString();
 

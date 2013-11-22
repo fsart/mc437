@@ -17,7 +17,6 @@ import com.patrimony.models.Patrimony;
 
 @Path("place-change")
 public class PlaceChangeService {
-
     @GET
     @Produces("application/json")
     public List<PlaceChange> list() {
