@@ -13,7 +13,6 @@ import com.patrimony.models.User;
 
 @Path("/users")
 public class UserService {
-
     @GET
     @Produces("application/json")
     public User signin(@QueryParam("username") String username, @QueryParam("password") String password) {

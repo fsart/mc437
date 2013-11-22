@@ -17,7 +17,6 @@ import com.patrimony.DB;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(value="users", noClassnameStored=true)
 public class User {
-
     @Id
     public String _id = new ObjectId().toString();
 
@@ -34,7 +33,7 @@ public class User {
     public String type;
 
     public User () {
-
+    
     }
 }
 
