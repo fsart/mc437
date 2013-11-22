@@ -4,13 +4,19 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
     $routeProvider.when('/enviar-arquivo', {
         templateUrl : '/client-views/send-file.tpl.html',
-        controller : function () {
+        controller : function ($rootScope, $scope, $http, $location) {
+            if (!$rootScope.user) {
+                return $location.path('/entrar');
+            }
 
         }
     }).
     when('/patrimonio/:id/alterar-localizacao', {
         templateUrl : '/client-views/place-change.tpl.html',
         controller : function ($rootScope, $scope, $http, $location, $routeParams) {
+            if (!$rootScope.user) {
+                return $location.path('/entrar');
+            }
 
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
                 $scope.patrimony = data;
@@ -28,6 +34,10 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
     when('/patrimonio/:id', {
         templateUrl : '/client-views/patrimony-details.tpl.html',
         controller : function ($rootScope, $scope, $http, $location, $routeParams) {
+            if (!$rootScope.user) {
+                return $location.path('/entrar');
+            }
+
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
                 $scope.patrimony = data;
             });
