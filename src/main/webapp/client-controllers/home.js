@@ -1,4 +1,5 @@
 /*global angular:false*/
+
 angular.module('app.home', []).config(function ($routeProvider) {
     'use strict';
 
