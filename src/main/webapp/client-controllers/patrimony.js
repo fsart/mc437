@@ -67,6 +67,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                         } else {
                             $http.post('/api/patrimonies', patrimonies).success(function () {
                                 $rootScope.message = 'planilha importada com sucesso';
+                                $location.path('/consultar-patrimonio');
                             }).error(function () {
                                 $rootScope.alert = 'ocorreu um erro no servidor';
                             });
