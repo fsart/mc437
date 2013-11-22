@@ -1,0 +1,25 @@
+<h1>
+    Cadastrar Usuário
+</h1>
+
+<form ng-submit="save()">
+    <fieldset>
+        <legend>Usuário</legend>
+
+        <div class="row">
+            <div class="columns">
+                <label>Nome de usuário</label>
+                <input type="text" ng-model="form.username">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns">
+                <label>Senha</label>
+                <input type="password" ng-model="form.password">
+            </div>
+        </div>
+
+    </fieldset>
+    <input type="submit" class="button" value="Enviar" />
+</form>

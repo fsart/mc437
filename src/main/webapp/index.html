@@ -25,12 +25,16 @@
             </ul>
             <section class="top-bar-section">
                 <ul class="right" ng-show="user">
+                    <li ng-show="user.type == 'admin'">
+                        <a href="#/cadastrar-usuario">Cadastrar Usuário</a>
+                    </li>
+                    <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
                     <li>
                         <a href="#/notificacoes">Notificações</a>
                     </li>
-                    <li class="divider hide-for-small"></li>
+                    <li class="divider hide-for-small" ng-show="user.type == 'admin'"></li>
                     <li>
-                        <a href="#/enviar-arquivo">Enviar arquivo</a>
+                        <a href="#/enviar-arquivo" ng-show="user.type == 'admin'">Enviar arquivo</a>
                     </li>
                     <li class="divider hide-for-small"></li>
                     <li>

@@ -23,6 +23,18 @@ angular.module('app.session', []).config(function ($routeProvider) {
             delete $rootScope.user;
             $location.path('/');
         }
+    }).
+    when('/cadastrar-usuario', {
+        templateUrl : '/client-views/user-register.tpl.html',
+        controller : function ($rootScope, $scope, $http, $location) {
+            $scope.form = {type : 'user'};
+
+            $scope.save = function () {
+                $http.post('/api/users', $scope.form).success(function () {
+                    $location.path('/');
+                });
+            };
+        }
     });
 
 });
