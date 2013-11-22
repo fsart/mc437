@@ -15,7 +15,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             $scope.form = {'patrimonyId' : $routeParams.id};
 
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
-                console.log(data);
+                $scope.patrimony = data;
             });
 
             $scope.save = function () {

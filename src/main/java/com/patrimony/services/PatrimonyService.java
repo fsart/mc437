@@ -28,7 +28,6 @@ public class PatrimonyService {
 
     @GET
     @Produces("application/json")
-    @Path("patrimonies")
     public List<Patrimony> list() {
         Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class);
 
