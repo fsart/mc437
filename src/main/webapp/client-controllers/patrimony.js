@@ -11,26 +11,6 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
         }
     }).
-    when('/patrimonio/:id/alterar-localizacao', {
-        templateUrl : '/client-views/place-change.tpl.html',
-        controller : function ($rootScope, $scope, $http, $location, $routeParams) {
-            if (!$rootScope.user) {
-                return $location.path('/entrar');
-            }
-
-            $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
-                $scope.patrimony = data;
-                $scope.form = {'patrimonyId' : $routeParams.id, building : data.building, floor : data.floor, complement : data.complement};
-            });
-
-            $scope.save = function () {
-                $http.post('/api/place-change', $scope.form).success(function () {
-                    $rootScope.message = 'requisição de alteração enviada';
-                    $location.path('/consultar-patrimonio');
-                });
-            };
-        }
-    }).
     when('/patrimonio/:id', {
         templateUrl : '/client-views/patrimony-details.tpl.html',
         controller : function ($rootScope, $scope, $http, $location, $routeParams) {

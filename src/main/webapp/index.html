@@ -10,8 +10,9 @@
         <script type="text/javascript" src="/client-controllers/home.js"></script>
         <script type="text/javascript" src="/client-controllers/session.js"></script>
         <script type="text/javascript" src="/client-controllers/patrimony.js"></script>
+        <script type="text/javascript" src="/client-controllers/place-change.js"></script>
         <script type="text/javascript">
-            angular.module('app', ['app.home','app.session', 'app.patrimony']);
+            angular.module('app', ['app.home','app.session', 'app.patrimony', 'app.placeChange']);
         </script>
         <link rel="stylesheet" href="/css/foundation.min.css">
     </head>
@@ -24,6 +25,10 @@
             </ul>
             <section class="top-bar-section">
                 <ul class="right" ng-show="user">
+                    <li>
+                        <a href="#/notificacoes">Notificações</a>
+                    </li>
+                    <li class="divider hide-for-small"></li>
                     <li>
                         <a href="#/enviar-arquivo">Enviar arquivo</a>
                     </li>

@@ -1,13 +1,11 @@
 package com.patrimony.models;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
@@ -20,8 +18,8 @@ import com.patrimony.DB;
 @Entity(value="place_changes", noClassnameStored=true)
 public class PlaceChange {
 
-    @XmlElement(name = "_id")
-    public ObjectId _id;
+    @Id
+    private String _id = new ObjectId().toString();
 
     @XmlElement(name = "patrimonyId")
     public String patrimonyId;
