@@ -2,7 +2,7 @@
 
 <div class="panel" ng-repeat="placeChange in placeChanges">
     <h5>Mudança na localização do patrimonio {{patrimony.id}}</h5>
-    <p>O patrimonio {{patrimony.id}} que estava alocado no prédio {{patrimony.building}} no andar {{patrimony.floor}}, {{patrimony.complement}} foi alocado no prédio {{placeChange.building}} no andar {{placeChange.floor}}, {{placeChange.complement}}</p>
+    <p>O patrimonio {{patrimony.id}} que estava alocado no prédio {{placeChange.oldBuilding}} no andar {{placeChange.oldFloor}}, {{placeChange.oldComplement}} foi alocado no prédio {{placeChange.building}} no andar {{placeChange.floor}}, {{placeChange.complement}} pelo usuário {{placeChange.user}}</p>
 
     <button class="button" ng-click="confirm(placeChange)"> Confirmar </button>
     <button class="button secondary" ng-click="cancel(placeChange)"> Cancelar </button>

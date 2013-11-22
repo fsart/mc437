@@ -11,7 +11,16 @@ angular.module('app.placeChange', []).config(function ($routeProvider) {
 
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
                 $scope.patrimony = data;
-                $scope.form = {'patrimonyId' : $routeParams.id, building : data.building, floor : data.floor, complement : data.complement};
+                $scope.form = {
+                    'patrimonyId' : $routeParams.id,
+                    'building' : data.building,
+                    'floor' : data.floor,
+                    'complement' : data.complement,
+                    'oldBuilding' : data.building,
+                    'oldFloor' : data.floor,
+                    'oldComplement' : data.complement,
+                    'user' : $rootScope.user.username
+                };
             }).error(function () {
                 $rootScope.alert = 'ocorreu um erro no servidor';
             });

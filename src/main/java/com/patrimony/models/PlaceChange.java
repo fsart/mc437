@@ -24,6 +24,22 @@ public class PlaceChange {
     @XmlElement(name = "patrimonyId")
     public String patrimonyId;
 
+    @Property("user")
+    @XmlElement(name = "user")
+    public String user;
+
+    @Property("oldBuilding")
+    @XmlElement(name = "oldBuilding")
+    public String oldBuilding;
+
+    @Property("oldFloor")
+    @XmlElement(name = "oldFloor")
+    public String oldFloor;
+
+    @Property("oldComplement")
+    @XmlElement(name = "oldComplement")
+    public String oldComplement;
+
     @Property("building")
     @XmlElement(name = "building")
     public String building;
