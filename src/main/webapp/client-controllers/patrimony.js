@@ -11,6 +11,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
             $scope.save = function () {
                 var reader = new FileReader();
+                $rootScope.loading = true;
 
                 reader.onload = function(file) {
                     $http.get('api/patrimonies').success(function (data) {
@@ -63,16 +64,20 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                             }
                         }
                         if (errors.length > 0) {
-                            $rootScope.alert = errors.join('<br>');
+                            $rootScope.loading = false;
+                            $rootScope.alert = errors.join('. ');
                         } else {
                             $http.post('/api/patrimonies', patrimonies).success(function () {
+                                $rootScope.loading = false;
                                 $rootScope.message = 'planilha importada com sucesso';
                                 $location.path('/consultar-patrimonio');
                             }).error(function () {
+                                $rootScope.loading = false;
                                 $rootScope.alert = 'ocorreu um erro no servidor';
                             });
                         }
                     }).error(function () {
+                        $rootScope.loading = false;
                         $rootScope.alert = 'ocorreu um erro no servidor';
                     });
                 };
@@ -115,6 +120,8 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
         templateUrl : '/client-views/patrimony-list.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
             var patrimonies;
+            $rootScope.loading = true;
+
             if (!$rootScope.user) {
                 return $location.path('/entrar');
             }
@@ -129,6 +136,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
             $scope.filter = function (form) {
                 form = form || {};
+                $rootScope.loading = false;
                 $scope.patrimonies = patrimonies.filter(function (patrimony) {
                     return (!form.id          || (patrimony.id          && patrimony.id.toLowerCase().search(form.id.toLowerCase()) > -1)) &&
                            (!form.process     || (patrimony.process     && patrimony.process.toLowerCase().search(form.process.toLowerCase()) > -1)) &&
@@ -137,7 +145,6 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                            (!form.description || (patrimony.description && patrimony.description.toLowerCase().search(form.description.toLowerCase()) > -1));
                 }).slice(0,50);
             };
-
 
             $http.get('api/patrimonies').success(function (data) {
                 patrimonies = data;
