@@ -13,30 +13,64 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                 var reader = new FileReader();
 
                 reader.onload = function(file) {
-                    var patrimonies = [];
-                    var records = file.target.result.split('\n');
-                    for (var i = 1; i < records.length; i+=1) {
-                        var record = records[i].split(/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/);
-                        patrimonies.push({
-                            'id' : record[1],
-                            'description' : record[2],
-                            'department' : record[0],
-                            'mark' : record[3],
-                            'model' : record[4],
-                            'serialNumber' : record[5],
-                            'acquisitionDate' : record[6],
-                            'closingDate' : record[7],
-                            'value' : record[8],
-                            'process' : record[9],
-                            'document' : record[10],
-                            'building' : record[11],
-                            'floor' : record[12],
-                            'complement' : record[13],
-                            'situation' : record[14]
-                        });
-                    }
-                    $http.post('/api/patrimonies', patrimonies).success(function () {
-                        $rootScope.message = 'planilha importada com sucesso';
+                    $http.get('api/patrimonies').success(function (data) {
+                        var i;
+                        var errors = [];
+                        var oldPatrimonies = {};
+                        var patrimonies = [];
+                        var records = file.target.result.split('\n');
+
+                        for (i = 0; i < data.length; i+= 1) {
+                            oldPatrimonies[data[i].id] = data[i];
+                        }
+                        for (i = 1; i < records.length; i+=1) {
+                            var record = records[i].split(/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/);
+                            var patrimony = {
+                                'id' : record[1],
+                                'description' : record[2],
+                                'department' : record[0],
+                                'mark' : record[3],
+                                'model' : record[4],
+                                'serialNumber' : record[5],
+                                'acquisitionDate' : record[6],
+                                'closingDate' : record[7],
+                                'value' : record[8],
+                                'process' : record[9],
+                                'document' : record[10],
+                                'building' : record[11],
+                                'floor' : record[12],
+                                'complement' : record[13],
+                                'situation' : record[14]
+                            };
+                            var oldData = oldPatrimonies[record[1]];
+                            if (oldData) {
+                                if (oldData.description !== patrimony.description) errors.push('A descrição do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.department !== patrimony.department) errors.push('O departamento do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.mark !== patrimony.mark) errors.push('A marca do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.model !== patrimony.model) errors.push('O modelo do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.serialNumber !== patrimony.serialNumber) errors.push('O serial number do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.acquisitionDate !== patrimony.acquisitionDate) errors.push('A data de aquisição do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.closingDate !== patrimony.closingDate) errors.push('A data de fechamento do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.value !== patrimony.value) errors.push('O valor do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.process !== patrimony.process) errors.push('O processo do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.document !== patrimony.document) errors.push('O documento do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.building !== patrimony.building) errors.push('O prédio do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.floor !== patrimony.floor) errors.push('O andar do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.complement !== patrimony.complement) errors.push('O complemento do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                                if (oldData.situation !== patrimony.situation) errors.push('A situação do item ' + patrimony.id + ' esta conflitante com os dados do banco');
+                            } else {
+                                patrimonies.push(patrimony);
+                            }
+                        }
+                        if (errors.length > 0) {
+                            $rootScope.alert = errors.join('<br>');
+                        } else {
+                            $http.post('/api/patrimonies', patrimonies).success(function () {
+                                $rootScope.message = 'planilha importada com sucesso';
+                            }).error(function () {
+                                $rootScope.alert = 'ocorreu um erro no servidor';
+                            });
+                        }
                     }).error(function () {
                         $rootScope.alert = 'ocorreu um erro no servidor';
                     });
@@ -95,11 +129,10 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             $scope.filter = function (form) {
                 form = form || {};
                 $scope.patrimonies = patrimonies.filter(function (patrimony) {
-                    return (!form.id || patrimony.id.toLowerCase().search(form.id.toLowerCase()) > -1) &&
-                           (!form.mark || patrimony.mark.toLowerCase().search(form.mark.toLowerCase()) > -1) &&
-                           (!form.model || patrimony.model.toLowerCase().search(form.model.toLowerCase()) > -1) &&
-                           (!form.color || patrimony.color.toLowerCase().search(form.color.toLowerCase()) > -1) &&
-                           (!form.description || patrimony.description.toLowerCase().search(form.description.toLowerCase()) > -1);
+                    return (!form.id          || (patrimony.id          && patrimony.id.toLowerCase().search(form.id.toLowerCase()) > -1)) &&
+                           (!form.mark        || (patrimony.mark        && patrimony.mark.toLowerCase().search(form.mark.toLowerCase()) > -1)) &&
+                           (!form.model       || (patrimony.model       && patrimony.model.toLowerCase().search(form.model.toLowerCase()) > -1)) &&
+                           (!form.description || (patrimony.description && patrimony.description.toLowerCase().search(form.description.toLowerCase()) > -1));
                 }).slice(0,500);
             };
 
