@@ -1,9 +1,10 @@
+/*global angular:false*/
 angular.module('app.patrimony', []).config(function ($routeProvider) {
+    'use strict';
 
-    $routeProvider.
-    when('/enviar-arquivo', {
+    $routeProvider.when('/enviar-arquivo', {
         templateUrl : '/client-views/send-file.tpl.html',
-        controller : function ($rootScope, $scope, $http, $location) {
+        controller : function () {
 
         }
     }).
@@ -12,6 +13,11 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
         controller : function ($rootScope, $scope, $http, $location, $routeParams) {
 
             $scope.form = {'patrimonyId' : $routeParams.id};
+
+            $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
+                console.log(data);
+            });
+
             $scope.save = function () {
                 $http.post('/api/place-change', $scope.form).success(function () {
                     $rootScope.message = 'requisição de alteração enviada';
@@ -23,17 +29,17 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
     when('/consultar-patrimonio', {
         templateUrl : '/client-views/patrimony-list.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
-        	var patrimonies;
+            var patrimonies;
             if (!$rootScope.user) {
                 return $location.path('/entrar');
             }
 
             $scope.sort = function (param) {
                 $scope.patrimonies.sort(function (a,b) {
-                    if (a[param] > b[param]) return  1;
-                    if (a[param] < b[param]) return -1;
+                    if (a[param] > b[param]) {return  1;}
+                    if (a[param] < b[param]) {return -1;}
                     return 0;
-                })
+                });
             };
 
             $scope.filter = function (form) {
@@ -49,7 +55,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
 
             $http.get('api/patrimonies').success(function (data) {
-            	patrimonies = data;
+                patrimonies = data;
                 $scope.filter();
             });
         }

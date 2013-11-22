@@ -14,12 +14,21 @@ import com.google.code.morphia.query.Query;
 import com.patrimony.DB;
 import com.patrimony.models.Patrimony;
 
-@Path("patrimonies")
+@Path("/patrimonies")
 public class PatrimonyService {
 
     @GET
-    @Consumes("application/json")
+    @Path("/{id}")
     @Produces("application/json")
+    public Patrimony details(@PathParam("id") ObjectId id) {
+        Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class).field("_id").equal(id);
+
+        return query.get();
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("patrimonies")
     public List<Patrimony> list() {
         Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class);
 
