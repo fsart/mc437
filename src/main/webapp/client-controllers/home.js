@@ -2,17 +2,15 @@
 angular.module('app.home', []).config(function ($routeProvider) {
     'use strict';
 
-    $routeProvider.when('/', {
-        templateUrl : '/client-views/home.tpl.html',
-        controller : function ($rootScope, $scope, $http, $location) {
-            if (!$rootScope.user) {
-                return $location.path('/entrar');
-            }
-        }
-    }).
-    when('/contato', {
+    $routeProvider.when('/contato', {
         templateUrl : '/client-views/contact.tpl.html',
         controller : function () {}
+    }).otherwise(function ($rootScope, $location) {
+        if (!$rootScope.user) {
+            return $location.path('/entrar');
+        } else {
+            return $location.path('/consultar-patrimonio');
+        }
     });
 
 });
