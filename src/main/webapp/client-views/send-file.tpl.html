@@ -1,12 +1,12 @@
 <h1>Enviar arquivo</h1>
 
-<form action="api/patrimonies" method="post" enctype="multipart/form-data">
+<form ng-submit="save()">
     <fieldset>
 
         <div class="row">
             <div class="columns">
                 <label>Arquivo</label>
-                <input type="file" id="inputFile" />
+                <input type="file" id="file" />
             </div>
         </div>
 

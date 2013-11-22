@@ -33,16 +33,11 @@ public class PatrimonyService {
         return query.asList();
     }
 
-    /*
     @POST
-    @Path("patrimonies")
-    @Consumes("multipart/form-data")
-    public List<String> upload(File file) throws Exception {
-        boolean hasConflict = false;
-        ArrayList<String> conflicts = new ArrayList<String>();
-        Xlsx xlsx = new Xlsx();
-        xlsx.read(file);
-        return conflicts;
+    @Consumes("application/json")
+    public JResponse create(List<Patrimony> patrimonies) {
+        DB.getDatastore().save(patrimonies);
+
+        return JResponse.ok().status(200).build();
     }
-    */
 }

@@ -1,4 +1,4 @@
-/*global angular:false*/
+/*global angular:false, FileReader:false, document:false*/
 angular.module('app.patrimony', []).config(function ($routeProvider) {
     'use strict';
 
@@ -8,6 +8,41 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
             if (!$rootScope.user) {
                 return $location.path('/entrar');
             }
+
+            $scope.save = function () {
+                var reader = new FileReader();
+
+                reader.onload = function(file) {
+                    var patrimonies = [];
+                    var records = file.target.result.split('\n');
+                    for (var i = 1; i < records.length; i+=1) {
+                        var record = records[i].split(/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/);
+                        patrimonies.push({
+                            'id' : record[1],
+                            'description' : record[2],
+                            'department' : record[0],
+                            'mark' : record[3],
+                            'model' : record[4],
+                            'serialNumber' : record[5],
+                            'acquisitionDate' : record[6],
+                            'closingDate' : record[7],
+                            'value' : record[8],
+                            'process' : record[9],
+                            'document' : record[10],
+                            'building' : record[11],
+                            'floor' : record[12],
+                            'complement' : record[13],
+                            'situation' : record[14]
+                        });
+                    }
+                    $http.post('/api/patrimonies', patrimonies).success(function () {
+                        $rootScope.message = 'planilha importada com sucesso';
+                    }).error(function () {
+                        $rootScope.alert = 'ocorreu um erro no servidor';
+                    });
+                };
+                reader.readAsBinaryString(document.getElementById('file').files[0]);
+            };
         }
     }).
     when('/patrimonio/:id', {
