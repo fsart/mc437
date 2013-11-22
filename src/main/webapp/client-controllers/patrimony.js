@@ -135,7 +135,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                            (!form.mark        || (patrimony.mark        && patrimony.mark.toLowerCase().search(form.mark.toLowerCase()) > -1)) &&
                            (!form.model       || (patrimony.model       && patrimony.model.toLowerCase().search(form.model.toLowerCase()) > -1)) &&
                            (!form.description || (patrimony.description && patrimony.description.toLowerCase().search(form.description.toLowerCase()) > -1));
-                }).slice(0,500);
+                }).slice(0,50);
             };
 
 
