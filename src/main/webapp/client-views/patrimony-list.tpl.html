@@ -4,12 +4,6 @@
     <fieldset>
         <legend>Filtrar resultados</legend>
 
-        <div class="row large-4">
-            <div class="columns">
-                <label>Id</label>
-                <input type="text" ng-model="form.id" ng-change="filter(form)">
-            </div>
-        </div>
         <div class="row">
             <div class="columns">
                 <label>Descricao</label>
@@ -26,8 +20,8 @@
                 <input type="text" ng-model="form.model" ng-change="filter(form)">
             </div>
             <div class="columns large-4">
-                <label>Cor</label>
-                <input type="text" ng-model="form.color" ng-change="filter(form)">
+                <label>PI Nº</label>
+                <input type="text" ng-model="form.id" ng-change="filter(form)">
             </div>
         </div>
 
@@ -57,7 +51,6 @@
             <td>{{patrimony.description}}</td>
             <td>{{patrimony.mark}}</td>
             <td>{{patrimony.model}}</td>
-            <td>{{patrimony.color}}</td>
             <td>{{patrimony.acquisitionDate}}</td>
             <td>{{patrimony.closingDate}}</td>
         </tr>
