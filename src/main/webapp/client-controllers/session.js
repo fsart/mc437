@@ -1,16 +1,19 @@
+/*global angular:false*/
 angular.module('app.session', []).config(function ($routeProvider) {
+    'use strict';
 
-    $routeProvider.
-    when('/entrar', {
+    $routeProvider.when('/entrar', {
         templateUrl : '/client-views/login.tpl.html',
         controller : function ($rootScope, $scope, $http, $location) {
             $scope.login = function (form) {
-            	if (form.user === 'geronimo' && form.password === '1234') {
-                    $rootScope.user = {token : '1234567'};
-                    $location.path('/');
-            	} else {
-            		$scope.alert = 'Login ou senha invalidos';
-            	}
+                $http.get('/api/users?username=' + form.user + '&password=' + form.password).success(function (user) {
+                    if (user) {
+                        $rootScope.user = user;
+                        $location.path('/');
+                    } else {
+                        $scope.alert = 'Login ou senha invalidos';
+                    }
+                });
             };
         }
     }).
