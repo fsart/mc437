@@ -130,6 +130,7 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
                 form = form || {};
                 $scope.patrimonies = patrimonies.filter(function (patrimony) {
                     return (!form.id          || (patrimony.id          && patrimony.id.toLowerCase().search(form.id.toLowerCase()) > -1)) &&
+                           (!form.process     || (patrimony.process     && patrimony.process.toLowerCase().search(form.process.toLowerCase()) > -1)) &&
                            (!form.mark        || (patrimony.mark        && patrimony.mark.toLowerCase().search(form.mark.toLowerCase()) > -1)) &&
                            (!form.model       || (patrimony.model       && patrimony.model.toLowerCase().search(form.model.toLowerCase()) > -1)) &&
                            (!form.description || (patrimony.description && patrimony.description.toLowerCase().search(form.description.toLowerCase()) > -1));
