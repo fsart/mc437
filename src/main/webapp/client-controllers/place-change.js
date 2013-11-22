@@ -31,6 +31,25 @@ angular.module('app.placeChange', []).config(function ($routeProvider) {
 
             $http.get('/api/place-change').success(function (data) {
                 $scope.placeChanges = data;
+                for (var i = 0; i < $scope.placeChanges.length; i+=1) {
+                    switch ($scope.placeChanges[i].building) {
+                    case '74' :
+                        $scope.placeChanges[i].building = 'IC1';
+                        break;
+                    case '75' :
+                        $scope.placeChanges[i].building = 'IC2';
+                        break;
+                    case '711' :
+                        $scope.placeChanges[i].building = 'IC3';
+                        break;
+                    case '1366' :
+                        $scope.placeChanges[i].building = 'IC3.5';
+                        break;
+                    case '724' :
+                        $scope.placeChanges[i].building = 'INOVA';
+                        break;
+                    }
+                }
             });
         }
     });

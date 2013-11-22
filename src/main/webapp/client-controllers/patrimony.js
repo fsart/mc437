@@ -20,6 +20,23 @@ angular.module('app.patrimony', []).config(function ($routeProvider) {
 
             $http.get('/api/patrimonies/' + $routeParams.id).success(function (data) {
                 $scope.patrimony = data;
+                switch (data.building) {
+                case '74' :
+                    $scope.patrimony.building = 'IC1';
+                    break;
+                case '75' :
+                    $scope.patrimony.building = 'IC2';
+                    break;
+                case '711' :
+                    $scope.patrimony.building = 'IC3';
+                    break;
+                case '1366' :
+                    $scope.patrimony.building = 'IC3.5';
+                    break;
+                case '724' :
+                    $scope.patrimony.building = 'INOVA';
+                    break;
+                }
             });
         }
     }).
