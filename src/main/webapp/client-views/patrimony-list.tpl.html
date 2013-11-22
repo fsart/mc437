@@ -1,13 +1,18 @@
+
 <h1>Patrimonio</h1>
 
 <form>
     <fieldset>
         <legend>Filtrar resultados</legend>
 
-        <div class="row">
-            <div class="columns">
+        <div class="row large-4">
+            <div class="columns large-4">
                 <label>Descricao</label>
                 <input type="text" ng-model="form.description" ng-change="filter(form)">
+            </div>
+            <div class="columns large-4">
+                <label>Processo</label>
+                <input type="text" ng-model="form.process" ng-change="filter(form)">
             </div>
         </div>
         <div class="row large-4">
@@ -35,6 +40,7 @@
             <th></th>
             <th ng-click="sort('id')">PI Nº</th>
             <th ng-click="sort('description')">Descricao</th>
+            <th ng-click="sort('process')">Processo</th>
             <th ng-click="sort('mark')">Marca</th>
             <th ng-click="sort('model')">Modelo</th>
             <th ng-click="sort('acquisitionDate')">Data de Aquisição</th>
@@ -49,6 +55,7 @@
             </td>
             <td>{{patrimony.id}}</td>
             <td>{{patrimony.description}}</td>
+            <td>{{patrimony.process}}</td>
             <td>{{patrimony.mark}}</td>
             <td>{{patrimony.model}}</td>
             <td>{{patrimony.acquisitionDate}}</td>

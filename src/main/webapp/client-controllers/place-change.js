@@ -1,4 +1,5 @@
 /*global angular:false*/
+
 angular.module('app.placeChange', []).config(function ($routeProvider) {
     'use strict';
 

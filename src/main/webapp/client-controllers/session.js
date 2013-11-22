@@ -1,4 +1,5 @@
 /*global angular:false*/
+
 angular.module('app.session', []).config(function ($routeProvider) {
     'use strict';
 
@@ -9,7 +10,7 @@ angular.module('app.session', []).config(function ($routeProvider) {
                 $http.get('/api/users?username=' + form.user + '&password=' + form.password).success(function (user) {
                     if (user) {
                         $rootScope.user = user;
-                        $location.path('/');
+                        $location.path('/consultar-patrimonio');
                     } else {
                         $rootScope.alert = 'Login ou senha invalidos';
                     }
