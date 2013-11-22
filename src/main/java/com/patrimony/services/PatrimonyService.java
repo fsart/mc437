@@ -7,7 +7,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.*;
 import com.sun.jersey.api.JResponse;
 
-import org.bson.types.ObjectId;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 
@@ -20,7 +19,7 @@ public class PatrimonyService {
     @GET
     @Path("/{id}")
     @Produces("application/json")
-    public Patrimony details(@PathParam("id") ObjectId id) {
+    public Patrimony details(@PathParam("id") String id) {
         Query<Patrimony> query = DB.getDatastore().createQuery(Patrimony.class).field("_id").equal(id);
 
         return query.get();

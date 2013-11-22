@@ -22,7 +22,7 @@ import com.patrimony.DB;
 public class Patrimony {
 
     @Id
-    private String _id = new ObjectId().toString();
+    public String _id = new ObjectId().toString();
 
     @Property("id")
     @XmlElement(name = "id")

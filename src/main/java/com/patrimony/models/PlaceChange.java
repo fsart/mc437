@@ -19,7 +19,7 @@ import com.patrimony.DB;
 public class PlaceChange {
 
     @Id
-    private String _id = new ObjectId().toString();
+    public String _id = new ObjectId().toString();
 
     @XmlElement(name = "patrimonyId")
     public String patrimonyId;
@@ -35,6 +35,10 @@ public class PlaceChange {
     @Property("complement")
     @XmlElement(name = "complement")
     public String complement;
+
+    @Property("status")
+    @XmlElement(name = "status")
+    public String status;
 
     public PlaceChange () {
 
